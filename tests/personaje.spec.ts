@@ -75,6 +75,14 @@ describe("Clase Personaje", () => {
     expect(() => { rick.id_especie = "PEPINILLO"; }).toThrow("ERROR: ID de la especie introducido inválido");
   })
 
+  test("Setter id_dimension: Cambio de dimensión", () => {
+    const morty = new Personaje("PER-002", "Morty", esp_referencia, dim_referencia, "Vivo", "Familia Smith", 3, "");
+    
+    morty.id_dimension = "C-137";
+    expect(morty.id_dimension).toBe("C-137");
+    expect(() => { morty.id_dimension = "DIMENSION-001"; }).toThrow("ERROR: ID de la dimensión introducido inválido");
+  })
+
   test("Setter nivel_inteligencia: validación de rango", () => {
     const morty = new Personaje("PER-002", "Morty", esp_referencia, dim_referencia, "Vivo", "Familia Smith", 3, "");
     

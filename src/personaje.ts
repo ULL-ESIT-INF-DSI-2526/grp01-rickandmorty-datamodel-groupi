@@ -140,7 +140,19 @@ export class Personaje {
 
     this.#id_especie = nuevo_id_especie;
   }
+  /**
+   * Modifica la dimensión de origen (o actual) del personaje
+   * @param nuevo_id_dimension - La nueva dimensión a la que se traslada
+   * @throws Error - Lanza un error si el id de la nueva dimensión no es válido
+   */
+  public set id_dimension(nuevo_id_dimension: string) {
+    const expresion_id_dimension = /^[A-Z]-?[A-Za-z0-9α-ωΑ-Ω]+$/;
+    if (!expresion_id_dimension.test(nuevo_id_dimension)) {
+      throw new Error("ERROR: ID de la dimensión introducido inválido");
+    } 
 
+    this.#id_dimension = nuevo_id_dimension;
+  }
   /**
    * Modifica el estado del personaje
    * @param nuevo_estado - El nuevo estado que se le asignará
