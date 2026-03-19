@@ -193,5 +193,28 @@ export class GestorMultiverso {
     });
     return viajesDelPersonaje;
   }
+public get dimensiones(): Dimension[] {
+  return this.#dimensiones;
 }
+
+public get personajes(): Personaje[] {
+  return this.#personajes;
+}
+
+public get especies(): Especie[] {
+  return this.#especies;
+}
+
+public get localizaciones(): Localizacion[] {
+  return this.#localizaciones;
+}
+
+public get artefactos(): Artefacto[] {
+  return this.#artefactos;
+}
+public get todosLosViajes(): RegistroViaje[] {
+  return this.#historialViajes;
+}
+}
+
 
