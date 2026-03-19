@@ -1,0 +1,16 @@
+{
+  "dimensiones": [
+    {
+      "id": "C-137",
+      "nombre": "Tierra C-137",
+      "estado": "Activa",
+      "nivel_tecnologico": 9,
+      "descripcion": "Dimensión original de Rick."
+    }
+  ],
+  "personajes": [],
+  "especies": [],
+  "localizaciones": [],
+  "artefactos": [],
+  "historialViajes": []
+}
