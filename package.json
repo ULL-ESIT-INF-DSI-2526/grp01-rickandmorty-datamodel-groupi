@@ -12,10 +12,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "devDependencies": {
     "@eslint/js": "^9.39.2",
     "@types/node": "^25.3.3",
+    "@types/prompts": "^2.4.9",
     "@types/readline-sync": "^1.4.8",
     "@vitest/coverage-v8": "^4.0.18",
     "eslint": "^9.39.2",
@@ -29,6 +30,8 @@
     "vitest": "^4.0.18"
   },
   "dependencies": {
+    "lowdb": "^7.0.1",
+    "prompts": "^2.4.2",
     "readline-sync": "^1.4.10"
   }
 }

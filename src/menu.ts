@@ -1,20 +1,12 @@
 import prompts from "prompts";
 import { Low } from "lowdb";
-import { GestorMultiverso } from "./gestor";
-import { Dimension, Estado } from "./dimension";
-import { Personaje } from "./personaje";
-import { Especie } from "./especie";
-import {
-  EntidadesSchema,
-  DimensionData,
-  PersonajeData,
-  EspecieData,
-  LocalizacionData,
-  ArtefactoData,
-  RegistroViajeData,
-} from "./base_de_datos/schema";
-import { Localizacion } from "./localizacion";
-import { Artefacto } from "./artefacto";
+import { GestorMultiverso } from "./gestor.js";
+import { Dimension, Estado } from "./dimension.js";
+import { Personaje } from "./personaje.js";
+import { Especie } from "./especie.js";
+import { EntidadesSchema, DimensionData, PersonajeData, EspecieData, LocalizacionData, ArtefactoData, RegistroViajeData} from "./base_de_datos/schema.js";
+import { Localizacion } from "./localizacion.js";
+import { Artefacto } from "./artefacto.js";
 
 
 export class MenuInteractivo {
@@ -45,19 +37,16 @@ export class MenuInteractivo {
     ]);
 
     try {
-      const nueva = new Dimension(
-        respuestas.id,
-        respuestas.nombre,
-        respuestas.estado as Estado,
-        respuestas.tech,
-        respuestas.desc,
-      );
+      const nueva = new Dimension(respuestas.id, respuestas.nombre, respuestas.estado as Estado, respuestas.tech, respuestas.desc);
       this.#gestor.crearDimension(nueva);
       await this.#sincronizar();
       console.log("Sistema: Dimensión guardada.");
     } catch (e: unknown) {
-      if (e instanceof Error) console.error(e.message);
+      if (e instanceof Error) {
+        console.error(e.message);
+      }
     }
+    await this.#pausa();
   }
 
 
@@ -75,7 +64,7 @@ export class MenuInteractivo {
 
     try {
 
-      const moduloLoc = await import("./localizacion");
+      const moduloLoc = await import("./localizacion.js");
 
 
       const nuevaLoc = new moduloLoc.Localizacion(
@@ -114,7 +103,7 @@ export class MenuInteractivo {
     if (Object.keys(a).length === 0) return;
 
     try {
-      const { Artefacto } = await import("./artefacto");
+      const { Artefacto } = await import("./artefacto.js");
       const nuevoArt = new Artefacto(
         a.id,
         a.nombre,
@@ -238,7 +227,9 @@ export class MenuInteractivo {
       { type: "text", name: "desc", message: "Descripción:" },
     ]);
 
-    if (Object.keys(r).length === 0) return;
+    if (r.id === undefined) {
+      return;
+    }
 
     try {
       const nuevo = new Personaje(
@@ -252,19 +243,13 @@ export class MenuInteractivo {
         r.desc,
       );
 
-      const g = this.#gestor as unknown as { "#personajes": Personaje[] };
-
-      if (g["#personajes"]) {
-        g["#personajes"].push(nuevo);
-        await this.#sincronizar();
-        console.log("Sistema: Personaje registrado correctamente.");
-      } else {
-        console.error(
-          "Error: No se encontró la lista de personajes en el gestor.",
-        );
-      }
+      this.#gestor.crearPersonaje(nuevo);
+      await this.#sincronizar();
+      console.log("Sistema: Personaje registrado correctamente.");
     } catch (err: unknown) {
-      if (err instanceof Error) console.error(err.message);
+      if (err instanceof Error) {
+        console.error(err.message);
+      }
     }
     await this.#pausa();
   }

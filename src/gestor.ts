@@ -1,9 +1,9 @@
-import { Dimension } from "./dimension";
-import { Personaje } from "./personaje";
-import { Especie } from "./especie";
-import { Localizacion } from "./localizacion";
-import { Artefacto } from "./artefacto";
-import { RegistroViaje } from "./registroviaje";
+import { Dimension } from "./dimension.js";
+import { Personaje } from "./personaje.js";
+import { Especie } from "./especie.js";
+import { Localizacion } from "./localizacion.js";
+import { Artefacto } from "./artefacto.js";
+import { RegistroViaje } from "./registroviaje.js";
 
 /**
  * Clase que gestiona el estado global del multiverso, controlando dimensiones, personajes, especies, localizaciones, artefactos y viajes entre dimensiones. 
@@ -33,6 +33,70 @@ export class GestorMultiverso {
     this.#localizaciones = localizaciones;
     this.#artefactos = artefactos;
     this.#historialViajes = historialViajes;
+  }
+  /**
+   * Getter para las dimensiones
+   */
+  public get dimensiones(): Dimension[] {
+  return this.#dimensiones;
+  }
+  /**
+   * Getter para los personajes
+   */
+  public get personajes(): Personaje[] {
+    return this.#personajes;
+  }
+  /**
+   * Getter para las especies
+   */
+  public get especies(): Especie[] {
+    return this.#especies;
+  }
+  /**
+   * Getter para las localizaciones
+   */
+  public get localizaciones(): Localizacion[] {
+    return this.#localizaciones;
+  }
+  /**
+   * Getter para los artefactos
+   */
+  public get artefactos(): Artefacto[] {
+    return this.#artefactos;
+  }
+  /**
+   * Getter para los viajes
+   */
+  public get todosLosViajes(): RegistroViaje[] {
+    return this.#historialViajes;
+  }
+  /**
+   * Función para añadir a la lista un nuevo personaje
+   * @param nuevoPersonaje Personaje a añadir 
+   */
+  public crearPersonaje(nuevoPersonaje: Personaje): void {
+    this.#personajes.push(nuevoPersonaje);
+  }
+  /**
+   * Función para añadir a la lista una nueva especie
+   * @param nuevaEspecie Especie a añadir 
+   */
+  public crearEspecie(nuevaEspecie: Especie): void {
+    this.#especies.push(nuevaEspecie);
+  }
+  /**
+   * Función para añadir a la lista una nueva localizacion
+   * @param nuevaLocalizacion Localizacion a añadir 
+   */
+  public crearLocalizacion(nuevaLocalizacion: Localizacion): void {
+    this.#localizaciones.push(nuevaLocalizacion);
+  }
+  /**
+   * Función para añadir a la lista un nuevo artefacto
+   * @param nuevoArtefacto Artefacto a añadir 
+   */
+  public crearArtefacto(nuevoArtefacto: Artefacto): void {
+    this.#artefactos.push(nuevoArtefacto);
   }
   /**
    * Controla el estado global del multiverso, detectando dimensiones destruidas o personajes cuya dimensión de origen ya no existe.
@@ -98,7 +162,7 @@ export class GestorMultiverso {
     }
     dimEncontrada.estado = "Destruida";
   }
-/**
+  /**
    * Despliegue de un artefacto en una localización concreta.
    * @param id_artefacto - Identificador del artefacto a desplegar
    * @param id_localizacion - Identificador de la localización donde se desplegará el artefacto
@@ -193,28 +257,6 @@ export class GestorMultiverso {
     });
     return viajesDelPersonaje;
   }
-public get dimensiones(): Dimension[] {
-  return this.#dimensiones;
-}
-
-public get personajes(): Personaje[] {
-  return this.#personajes;
-}
-
-public get especies(): Especie[] {
-  return this.#especies;
-}
-
-public get localizaciones(): Localizacion[] {
-  return this.#localizaciones;
-}
-
-public get artefactos(): Artefacto[] {
-  return this.#artefactos;
-}
-public get todosLosViajes(): RegistroViaje[] {
-  return this.#historialViajes;
-}
 }
 
 

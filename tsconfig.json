@@ -6,7 +6,7 @@
   ],
   "compilerOptions": {
     "target": "ES2024",
-    "module": "commonjs",
+    "module": "node16",
     "rootDir": "./src",
     "outDir": "./dist",
     // Environment Settings
