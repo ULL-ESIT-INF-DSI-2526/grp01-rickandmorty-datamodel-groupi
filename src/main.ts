@@ -1,6 +1,7 @@
 import { JSONFilePreset } from 'lowdb/node';
 import { MenuInteractivo } from './menu.js';
 import { GestorMultiverso } from './gestor.js';
+import { RepositorioMultiverso } from './repositorio.js';
 import { Dimension } from './dimension.js';
 import { Personaje } from './personaje.js';
 import { Especie } from './especie.js';
@@ -8,44 +9,47 @@ import { Localizacion } from './localizacion.js';
 import { Artefacto } from './artefacto.js';
 import { EntidadesSchema } from './base_de_datos/schema.js';
 
-
+/**
+ * Función principal que arranca la aplicación
+ * Carga la base de datos, prepara los datos y lanza el menú
+ */
 async function bootstrap() {
   console.log("Iniciando conexión con el Multiverso...");
 
-
-const db = await JSONFilePreset<EntidadesSchema>('./src/base_de_datos/database.json', {
-  dimensiones: [],
-  personajes: [],
-  especies: [],
-  localizaciones: [],
-  artefactos: [],
-  historialViajes: []
-});
+  const db = await JSONFilePreset<EntidadesSchema>('./src/base_de_datos/database.json', {
+    dimensiones: [],
+    personajes: [],
+    especies: [],
+    localizaciones: [],
+    artefactos: [],
+    historialViajes: []
+  });
  
-  const dimensiones = db.data.dimensiones.map(d => 
-    new Dimension(d.id, d.nombre, d.estado, d.nivel_tecnologico, d.descripcion)
+  const dimensiones = db.data.dimensiones.map(dim => 
+    new Dimension(dim.id, dim.nombre, dim.estado, dim.nivel_tecnologico, dim.descripcion)
   );
 
-  const especies = db.data.especies.map(e => 
-    new Especie(e.id, e.nombre, e.id_origen, e.tipo, e.esperanza_de_vida, e.descripcion)
+  const especies = db.data.especies.map(esp => 
+    new Especie(esp.id, esp.nombre, esp.id_origen, esp.tipo, esp.esperanza_de_vida, esp.descripcion)
   );
 
-  const personajes = db.data.personajes.map(p => 
-    new Personaje(p.id, p.nombre, p.id_especie, p.id_dimension, p.estado, p.afiliacion, p.nivel_inteligencia, p.descripcion)
+  const personajes = db.data.personajes.map(per => 
+    new Personaje(per.id, per.nombre, per.id_especie, per.id_dimension, per.estado, per.afiliacion, per.nivel_inteligencia, per.descripcion)
   );
 
-  const localizaciones = db.data.localizaciones.map(l => 
-    new Localizacion(l.id, l.nombre, l.tipo, l.id_dimension, l.poblacion, l.descripcion)
+  const localizaciones = db.data.localizaciones.map(loc => 
+    new Localizacion(loc.id, loc.nombre, loc.tipo, loc.id_dimension, loc.poblacion, loc.descripcion)
   );
 
-  const artefactos = db.data.artefactos.map(a => 
-    new Artefacto(a.id, a.nombre, a.id_inventor, a.tipo, a.nivel_peligrosidad, a.descripcion)
+  const artefactos = db.data.artefactos.map(art => 
+    new Artefacto(art.id, art.nombre, art.id_inventor, art.tipo, art.nivel_peligrosidad, art.descripcion)
   );
   const historial = db.data.historialViajes.map(viaje => ({
     ...viaje,
     fecha: new Date(viaje.fecha) // Convertimos el string ISO a objeto Date
   }))
 
+  // Prepara el gestor, el guardado y el menú con los datos recuperados
   const gestor = new GestorMultiverso(
     dimensiones,
     personajes,
@@ -55,14 +59,17 @@ const db = await JSONFilePreset<EntidadesSchema>('./src/base_de_datos/database.j
     historial
   );
 
-  const menu = new MenuInteractivo(gestor, db);
+  const repositorio = new RepositorioMultiverso(gestor, db);
+
+  const menu = new MenuInteractivo(gestor, repositorio);
 
   await menu.iniciar();
 }
 
-bootstrap().catch((err: unknown) => {
-  if (err instanceof Error) {
-    console.error("ERROR FATAL AL CARGAR EL MULTIVERSO:", err.message);
+// Ejecución de la función principal con control global de errores
+bootstrap().catch((error: unknown) => {
+  if (error instanceof Error) {
+    console.error("ERROR FATAL AL CARGAR EL MULTIVERSO:", error.message);
   }
   process.exit(1);
 });

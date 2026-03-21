@@ -1,25 +1,18 @@
 {
   "dimensiones": [
     {
-      "id": "C-137",
-      "nombre": "Tierra C-137",
-      "estado": "Activa",
-      "nivel_tecnologico": 9,
-      "descripcion": "Dimensión original de Rick."
-    },
-    {
-      "id": "C-137",
-      "nombre": "DimT",
-      "estado": "En cuarentena",
-      "nivel_tecnologico": 6,
-      "descripcion": "Probando 1,2,3"
-    },
-    {
       "id": "C-345",
       "nombre": "DIMWOW",
       "estado": "Activa",
       "nivel_tecnologico": 9,
       "descripcion": "WOW"
+    },
+    {
+      "id": "C-137",
+      "nombre": "Dimensión alfa",
+      "estado": "Activa",
+      "nivel_tecnologico": 9,
+      "descripcion": "Vive La Pantera"
     }
   ],
   "personajes": [

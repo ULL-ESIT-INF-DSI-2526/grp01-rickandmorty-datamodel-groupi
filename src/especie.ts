@@ -102,6 +102,14 @@ export class Especie {
   }
 
   /**
+   * Modifica el origen de la especie
+   * @param nuevo_id_origen - El nuevo origen que se le asignará
+   */
+  public set id_origen(nuevo_id_origen: string) {
+    this.#id_origen = nuevo_id_origen;
+  }
+
+  /**
    * Modifica el tipo de la especie
    * @param nuevo_tipo - El nuevo tipo que se le asignará
    */

@@ -101,6 +101,14 @@ export class Artefacto {
   }
 
   /**
+   * Modifica el inventor del artefacto
+   * @param nuevo_id_inventor - El nuevo inventor que se le asignará
+   */
+  public set id_inventor(nuevo_id_inventor: string) {
+    this.#id_inventor = nuevo_id_inventor;
+  }
+
+  /**
    * Modifica el tipo del artefacto
    * @param nuevo_tipo - El nuevo tipo que se le asignará
    */
