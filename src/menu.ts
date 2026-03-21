@@ -6,7 +6,6 @@ import { Personaje } from "./personaje.js";
 import { Especie } from "./especie.js";
 import { Localizacion } from "./localizacion.js";
 import { Artefacto } from "./artefacto.js";
-import { resourceUsage } from "node:process";
 
 /**
  * Clase que representa el menú interactivo por consola del multiverso

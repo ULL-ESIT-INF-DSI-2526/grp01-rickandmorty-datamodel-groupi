@@ -47,7 +47,7 @@ async function bootstrap() {
   const historial = db.data.historialViajes.map(viaje => ({
     ...viaje,
     fecha: new Date(viaje.fecha) // Convertimos el string ISO a objeto Date
-  }))
+  }));
 
   // Prepara el gestor, el guardado y el menú con los datos recuperados
   const gestor = new GestorMultiverso(
