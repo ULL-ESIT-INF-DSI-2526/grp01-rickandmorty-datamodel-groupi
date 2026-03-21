@@ -736,7 +736,11 @@ export class MenuInteractivo {
 
     await this.#pausa();
   }
-
+  /**
+   * Función para consultar los personajes
+   * Permite filtrar por nombre, afiliación, estado y dimension de origen
+   * Permite ordenarlos por nombre o nivel de inteligencia, de forma ascendente o descendente
+   */
   async #consultarPersonajes(): Promise<void> {
     const { filtro } = await prompts ({
       type: "select",
