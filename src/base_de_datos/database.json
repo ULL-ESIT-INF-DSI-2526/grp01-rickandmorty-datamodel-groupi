@@ -25,6 +25,16 @@
       "afiliacion": "guardianes",
       "nivel_inteligencia": 9,
       "descripcion": "guardianes pop"
+    },
+    {
+      "id": "PER-727",
+      "nombre": "Esty",
+      "id_especie": "ESP-372",
+      "id_dimension": "C-738L",
+      "estado": "Muerto",
+      "afiliacion": "robots",
+      "nivel_inteligencia": 10,
+      "descripcion": "robot magico"
     }
   ],
   "especies": [],
