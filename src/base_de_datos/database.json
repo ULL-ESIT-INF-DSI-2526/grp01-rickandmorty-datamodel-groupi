@@ -39,6 +39,15 @@
   ],
   "especies": [],
   "localizaciones": [],
-  "artefactos": [],
+  "artefactos": [
+    {
+      "id": "ART-001",
+      "nombre": "Pistola",
+      "id_inventor": "PER-001",
+      "tipo": "Pistola",
+      "nivel_peligrosidad": 10,
+      "descripcion": "prueba"
+    }
+  ],
   "historialViajes": []
 }

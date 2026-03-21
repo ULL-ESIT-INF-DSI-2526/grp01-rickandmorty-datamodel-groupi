@@ -850,6 +850,123 @@ export class MenuInteractivo {
   }
 
   /**
+   * Función para consultar los artefactos (inventos).
+   * Permite filtrar por nombre, tipo, inventor o peligrosidad.
+   * Permite ordenarlos por nombre o nivel de peligrosidad, ascendente o descendente.
+   */
+  async #consultarArtefactos(): Promise<void> {
+    const { filtro } = await prompts({
+      type: "select",
+      name: "filtro",
+      message: "¿Por qué campo quieres filtrar los artefactos?",
+      choices: [
+        { title: "Todos (sin filtro)", value: "TODOS" },
+        { title: "Nombre", value: "nombre" },
+        { title: "Inventor (ID)", value: "id_inventor" },
+        { title: "Tipo", value: "tipo" },
+        { title: "Peligrosidad", value: "nivel_peligrosidad" }
+      ]
+    });
+
+    if (!filtro) {
+      return;
+    }
+
+    let listaFiltrada = [...this.#gestor.artefactos];
+
+    if (filtro !== "TODOS") {
+      const { valor } = await prompts({
+        type: "text",
+        name: "valor",
+        message: `Introduce el valor para buscar por ${filtro}:`
+      });
+
+      if (valor === undefined) {
+        return;
+      }
+
+      listaFiltrada = listaFiltrada.filter(art => {
+        let propiedad = "";
+        switch (filtro) {
+          case "nombre": propiedad = art.nombre; break;
+          case "id_inventor": propiedad = art.id_inventor; break;
+          case "tipo": propiedad = art.tipo; break;
+          case "nivel_peligrosidad": propiedad = art.nivel_peligrosidad.toString(); break; 
+        }
+        return propiedad.toLowerCase().includes(valor.toLowerCase());
+      });
+    }
+
+    // Para aplicar la ordenación de los artefactos
+    const { criterio, sentido } = await prompts([
+      {
+        type: "select",
+        name: "criterio",
+        message: "Criterio de ordenación:",
+        choices: [
+          { title: "Nombre", value: "nombre" },
+          { title: "Peligrosidad", value: "nivel_peligrosidad" }
+        ]
+      },
+      {
+        type: "select",
+        name: "sentido",
+        message: "Sentido de la ordenación:",
+        choices: [
+          { title: "Ascendente", value: "ASC" },
+          { title: "Descendente", value: "DES" }
+        ]
+      }
+    ]);
+
+    if (criterio === undefined || sentido === undefined) {
+      return;
+    }
+
+    listaFiltrada.sort((a, b) => {
+      let resultado = 0;
+      
+      if (criterio === "nombre") {
+        const valA = a.nombre.toLowerCase();
+        const valB = b.nombre.toLowerCase();
+        resultado = valA.localeCompare(valB);
+      } else {
+        const valA = a.nivel_peligrosidad;
+        const valB = b.nivel_peligrosidad;
+        if (valA > valB) {
+          resultado = 1;
+        } else if (valA < valB) {
+          resultado = -1;
+        } else {
+          resultado = 0;
+        }
+      }
+
+      if (sentido === "DES") { 
+        return resultado * -1; // Invierte el resultado para orden descendente
+      }
+      return resultado;
+    });
+    
+    // Mostrar el resultado final 
+    console.log(`\n--- RESULTADOS DE LA CONSULTA (${listaFiltrada.length} artefactos) ---`);
+    if (listaFiltrada.length > 0) {
+      console.table(
+        listaFiltrada.map((art) => ({
+          ID: art.id,
+          Nombre: art.nombre,
+          Tipo: art.tipo,
+          Inventor: art.id_inventor,
+          Peligrosidad: art.nivel_peligrosidad
+        }))
+      );
+    } else {
+      console.log("No se encontraron artefactos con dichos criterios.");
+    }
+    await this.#pausa();
+  }
+
+  /**
    * Detiene la pantalla mostrando un prompt para que el usuario
    * presione Enter antes de limpiar la pantalla y volver al menú principal
    */
@@ -890,7 +1007,8 @@ export class MenuInteractivo {
       ["MOD_LOC", () => this.#modificarLocalizacion()],
       ["MOD_ART", () => this.#modificarArtefacto()],
       ["CONSULTAR_LOC", () => this.#consultarLocalizaciones()],
-      ["CONSULTAR_PER", () => this.#consultarPersonajes()]
+      ["CONSULTAR_PER", () => this.#consultarPersonajes()],
+      ["CONSULTAR_ART", () => this.#consultarArtefactos()]
     ]);
 
     while (!salir) {
@@ -917,6 +1035,7 @@ export class MenuInteractivo {
           { title: "Eliminar Artefacto", value: "DEL_ART" },
           { title: "Consultar Localizaciones", value: "CONSULTAR_LOC" },
           { title: "Consultar Personajes", value: "CONSULTAR_PER"},
+          { title: "Consultar Artefactos", value: "CONSULTAR_ART" },
           { title: "Registrar Viaje", value: "VIAJE" },
           { title: "Buscar Variantes", value: "SEARCH_VAR" },
           { title: "Informe: Anomalías", value: "ANOM" },
