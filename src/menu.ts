@@ -853,19 +853,19 @@ export class MenuInteractivo {
   /**
    * Función para consultar los artefactos (inventos).
    * Permite filtrar por nombre, tipo, inventor o peligrosidad.
-   * Permite ordenarlos por nombre o nivel de peligrosidad, ascendente o descendente.
    */
+  
   async #consultarArtefactos(): Promise<void> {
     const { filtro } = await prompts({
       type: "select",
       name: "filtro",
       message: "¿Por qué campo quieres filtrar los artefactos?",
       choices: [
-        { title: "Todos (sin filtro)", value: "TODOS" },
+        { title: "Sin filtro (Mostrar todos)", value: "TODOS" },
         { title: "Nombre", value: "nombre" },
-        { title: "Inventor (ID)", value: "id_inventor" },
         { title: "Tipo", value: "tipo" },
-        { title: "Peligrosidad", value: "nivel_peligrosidad" }
+        { title: "Inventor (ID)", value: "id_inventor" },
+        { title: "Nivel de peligrosidad", value: "nivel_peligrosidad" }
       ]
     });
 
@@ -881,76 +881,31 @@ export class MenuInteractivo {
         name: "valor",
         message: `Introduce el valor para buscar por ${filtro}:`
       });
-
-      if (valor === undefined) {
+      if (!valor) {
         return;
       }
-
       listaFiltrada = listaFiltrada.filter(art => {
         let propiedad = "";
         switch (filtro) {
-          case "nombre": propiedad = art.nombre; break;
-          case "id_inventor": propiedad = art.id_inventor; break;
-          case "tipo": propiedad = art.tipo; break;
-          case "nivel_peligrosidad": propiedad = art.nivel_peligrosidad.toString(); break; 
+          case "nombre": 
+            propiedad = art.nombre; 
+            break;
+          case "tipo": 
+            propiedad = art.tipo; 
+            break;
+          case "id_inventor": 
+            propiedad = art.id_inventor; 
+            break;
+          case "nivel_peligrosidad": 
+            propiedad = art.nivel_peligrosidad.toString(); 
+            break;
         }
         return propiedad.toLowerCase().includes(valor.toLowerCase());
       });
     }
 
-    // Para aplicar la ordenación de los artefactos
-    const { criterio, sentido } = await prompts([
-      {
-        type: "select",
-        name: "criterio",
-        message: "Criterio de ordenación:",
-        choices: [
-          { title: "Nombre", value: "nombre" },
-          { title: "Peligrosidad", value: "nivel_peligrosidad" }
-        ]
-      },
-      {
-        type: "select",
-        name: "sentido",
-        message: "Sentido de la ordenación:",
-        choices: [
-          { title: "Ascendente", value: "ASC" },
-          { title: "Descendente", value: "DES" }
-        ]
-      }
-    ]);
-
-    if (criterio === undefined || sentido === undefined) {
-      return;
-    }
-
-    listaFiltrada.sort((a, b) => {
-      let resultado = 0;
-      
-      if (criterio === "nombre") {
-        const valA = a.nombre.toLowerCase();
-        const valB = b.nombre.toLowerCase();
-        resultado = valA.localeCompare(valB);
-      } else {
-        const valA = a.nivel_peligrosidad;
-        const valB = b.nivel_peligrosidad;
-        if (valA > valB) {
-          resultado = 1;
-        } else if (valA < valB) {
-          resultado = -1;
-        } else {
-          resultado = 0;
-        }
-      }
-
-      if (sentido === "DES") { 
-        return resultado * -1; // Invierte el resultado para orden descendente
-      }
-      return resultado;
-    });
-    
-    // Mostrar el resultado final 
     console.log(`\n--- RESULTADOS DE LA CONSULTA (${listaFiltrada.length} artefactos) ---`);
+    
     if (listaFiltrada.length > 0) {
       console.table(
         listaFiltrada.map((art) => ({
@@ -962,8 +917,9 @@ export class MenuInteractivo {
         }))
       );
     } else {
-      console.log("No se encontraron artefactos con dichos criterios.");
+      console.log("No se encontraron artefactos con esos criterios.");
     }
+
     await this.#pausa();
   }
 
