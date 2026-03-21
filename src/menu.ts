@@ -229,6 +229,7 @@ export class MenuInteractivo {
         Ubicacion: p.id_dimension,
       })),
     );
+    await this.#pausa();
   }
 
 

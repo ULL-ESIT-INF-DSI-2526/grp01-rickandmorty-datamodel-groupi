@@ -1,53 +1,884 @@
 {
   "dimensiones": [
     {
-      "id": "C-345",
-      "nombre": "DIMWOW",
+      "id": "C-137",
+      "nombre": "Dimensión Original",
       "estado": "Activa",
       "nivel_tecnologico": 9,
-      "descripcion": "WOW"
+      "descripcion": "El universo de origen del Rick principal. Supuestamente el más 'Rick' de todos."
     },
     {
-      "id": "C-137",
-      "nombre": "Dimensión alfa",
+      "id": "C-131",
+      "nombre": "Dimensión de Reemplazo",
+      "estado": "Destruida",
+      "nivel_tecnologico": 8,
+      "descripcion": "La dimensión a la que Rick y Morty se mudaron tras el desastre Cronenberg. Abandonada por culpa de las ardillas."
+    },
+    {
+      "id": "C-900",
+      "nombre": "Mundo Cronenberg",
+      "estado": "En cuarentena",
+      "nivel_tecnologico": 2,
+      "descripcion": "Antigua C-137 post-poción de amor. Todos los habitantes son monstruos de carne mutada."
+    },
+    {
+      "id": "J-19Z7",
+      "nombre": "Dimensión Doofus",
       "estado": "Activa",
-      "nivel_tecnologico": 9,
-      "descripcion": "Vive La Pantera"
+      "nivel_tecnologico": 6,
+      "descripcion": "Dimensión de origen de Doofus Rick. Los habitantes respiran sin problemas pero son considerados 'tontos' por los demás."
+    },
+    {
+      "id": "C-35",
+      "nombre": "Dimensión Mega-Semillas",
+      "estado": "Activa",
+      "nivel_tecnologico": 3,
+      "descripcion": "Hogar de los Mega-Árboles y las Mega-Semillas que otorgan súper inteligencia temporal."
+    },
+    {
+      "id": "P-100",
+      "nombre": "Dimensión de la Purga",
+      "estado": "Activa",
+      "nivel_tecnologico": 5,
+      "descripcion": "Planeta pacífico con una sociedad agrícola que celebra un festival anual de asesinato y caos libre."
+    },
+    {
+      "id": "T-10",
+      "nombre": "Dimensión Tóxica",
+      "estado": "En cuarentena",
+      "nivel_tecnologico": 4,
+      "descripcion": "Universo de bolsillo donde reside la toxicidad extraída del spa alienígena."
+    },
+    {
+      "id": "A-40",
+      "nombre": "Dimensión de las Avispas",
+      "estado": "Activa",
+      "nivel_tecnologico": 8,
+      "descripcion": "Una realidad paralela donde todos los humanos evolucionaron a partir de avispas gigantes."
+    },
+    {
+      "id": "S-000",
+      "nombre": "Dimensión de los Muebles",
+      "estado": "Activa",
+      "nivel_tecnologico": 6,
+      "descripcion": "Realidad donde las sillas conscientes se sientan sobre personas, y piden personas por teléfono."
+    },
+    {
+      "id": "T-922",
+      "nombre": "Dimensión de los Teléfonos",
+      "estado": "Activa",
+      "nivel_tecnologico": 7,
+      "descripcion": "Realidad donde los teléfonos se sientan en sofás y piden personas a domicilio."
+    },
+    {
+      "id": "F-RC0",
+      "nombre": "Dimensión Fascista",
+      "estado": "Activa",
+      "nivel_tecnologico": 7,
+      "descripcion": "Realidad dominada por regímenes totalitarios. Curiosamente poblada por gambas o clones de osos de peluche."
+    },
+    {
+      "id": "F-PY",
+      "nombre": "Froopylandia",
+      "estado": "Activa",
+      "nivel_tecnologico": 1,
+      "descripcion": "Dimensión de bolsillo generada proceduralmente por Rick para mantener a Beth ocupada cuando era niña."
+    },
+    {
+      "id": "M-1",
+      "nombre": "Microverso",
+      "estado": "Activa",
+      "nivel_tecnologico": 7,
+      "descripcion": "Universo creado dentro de una batería de coche para generar electricidad pisando pedales."
+    },
+    {
+      "id": "M-2",
+      "nombre": "Miniverso",
+      "estado": "Activa",
+      "nivel_tecnologico": 6,
+      "descripcion": "Universo creado por los habitantes del Microverso para no tener que pedalear."
+    },
+    {
+      "id": "C-002",
+      "nombre": "Dimensión Cromulon",
+      "estado": "Activa",
+      "nivel_tecnologico": 10,
+      "descripcion": "El sector del espacio de donde provienen las cabezas gigantes flotantes a las que les encanta la música."
     }
   ],
   "personajes": [
     {
-      "id": "PER-678",
-      "nombre": "Poop",
-      "id_especie": "ESP-896",
-      "id_dimension": "C-500A",
+      "id": "PER-01",
+      "nombre": "Rick Sanchez",
+      "id_especie": "ESP-01",
+      "id_dimension": "C-137",
       "estado": "Vivo",
-      "afiliacion": "guardianes",
-      "nivel_inteligencia": 9,
-      "descripcion": "guardianes pop"
+      "afiliacion": "Ninguna",
+      "nivel_inteligencia": 10,
+      "descripcion": "El Rick original y supuestamente el más inteligente del multiverso."
     },
     {
-      "id": "PER-727",
-      "nombre": "Esty",
-      "id_especie": "ESP-372",
-      "id_dimension": "C-738L",
-      "estado": "Muerto",
-      "afiliacion": "robots",
-      "nivel_inteligencia": 10,
-      "descripcion": "robot magico"
-    }
-  ],
-  "especies": [],
-  "localizaciones": [],
-  "artefactos": [
+      "id": "PER-02",
+      "nombre": "Morty Smith",
+      "id_especie": "ESP-01",
+      "id_dimension": "C-137",
+      "estado": "Vivo",
+      "afiliacion": "Ninguna",
+      "nivel_inteligencia": 4,
+      "descripcion": "El compañero de aventuras original de Rick C-137."
+    },
     {
-      "id": "ART-001",
-      "nombre": "Pistola",
-      "id_inventor": "PER-001",
-      "tipo": "Pistola",
-      "nivel_peligrosidad": 10,
-      "descripcion": "prueba"
+      "id": "PER-03",
+      "nombre": "Doofus Rick",
+      "id_especie": "ESP-01",
+      "id_dimension": "J-19Z7",
+      "estado": "Vivo",
+      "afiliacion": "Ciudadela",
+      "nivel_inteligencia": 6,
+      "descripcion": "Versión bondadosa de Rick, despreciado por los demás Ricks."
+    },
+    {
+      "id": "PER-04",
+      "nombre": "Evil Morty",
+      "id_especie": "ESP-01",
+      "id_dimension": "C-131",
+      "estado": "Vivo",
+      "afiliacion": "Independiente",
+      "nivel_inteligencia": 10,
+      "descripcion": "Un Morty superdotado y manipulador con un parche en el ojo."
+    },
+    {
+      "id": "PER-05",
+      "nombre": "Rick Tóxico",
+      "id_especie": "ESP-01",
+      "id_dimension": "T-10",
+      "estado": "Vivo",
+      "afiliacion": "Ninguna",
+      "nivel_inteligencia": 9,
+      "descripcion": "La encarnación de todos los rasgos que Rick considera tóxicos en sí mismo."
+    },
+    {
+      "id": "PER-06",
+      "nombre": "Morty Tóxico",
+      "id_especie": "ESP-01",
+      "id_dimension": "T-10",
+      "estado": "Vivo",
+      "afiliacion": "Ninguna",
+      "nivel_inteligencia": 3,
+      "descripcion": "La encarnación de la inseguridad y autodesprecio de Morty."
+    },
+    {
+      "id": "PER-07",
+      "nombre": "Rick Avispa",
+      "id_especie": "ESP-08",
+      "id_dimension": "A-40",
+      "estado": "Vivo",
+      "afiliacion": "Familia Avispa",
+      "nivel_inteligencia": 10,
+      "descripcion": "Versión insectoide de Rick que come a sus presas vivas, pero es muy comprensivo."
+    },
+    {
+      "id": "PER-08",
+      "nombre": "Morty Avispa",
+      "id_especie": "ESP-08",
+      "id_dimension": "A-40",
+      "estado": "Vivo",
+      "afiliacion": "Familia Avispa",
+      "nivel_inteligencia": 4,
+      "descripcion": "Versión insectoide de Morty."
+    },
+    {
+      "id": "PER-09",
+      "nombre": "Rick Fascista",
+      "id_especie": "ESP-01",
+      "id_dimension": "F-RC0",
+      "estado": "Muerto",
+      "afiliacion": "Régimen Totalitario",
+      "nivel_inteligencia": 9,
+      "descripcion": "Una versión de Rick obsesionada con el orden y los regímenes totalitarios."
+    },
+    {
+      "id": "PER-10",
+      "nombre": "Morty Fascista",
+      "id_especie": "ESP-01",
+      "id_dimension": "F-RC0",
+      "estado": "Muerto",
+      "afiliacion": "Régimen Totalitario",
+      "nivel_inteligencia": 5,
+      "descripcion": "Seguidor fiel del régimen de su dimensión."
+    },
+    {
+      "id": "PER-11",
+      "nombre": "Rick Silla",
+      "id_especie": "ESP-09",
+      "id_dimension": "S-000",
+      "estado": "Vivo",
+      "afiliacion": "Ninguna",
+      "nivel_inteligencia": 8,
+      "descripcion": "Una silla consciente con la mente de Rick."
+    },
+    {
+      "id": "PER-12",
+      "nombre": "Morty Silla",
+      "id_especie": "ESP-09",
+      "id_dimension": "S-000",
+      "estado": "Vivo",
+      "afiliacion": "Ninguna",
+      "nivel_inteligencia": 4,
+      "descripcion": "Una silla adolescente nerviosa."
+    },
+    {
+      "id": "PER-13",
+      "nombre": "Rick Teléfono",
+      "id_especie": "ESP-10",
+      "id_dimension": "T-922",
+      "estado": "Vivo",
+      "afiliacion": "Ninguna",
+      "nivel_inteligencia": 8,
+      "descripcion": "Un teléfono que pide personas a domicilio."
+    },
+    {
+      "id": "PER-14",
+      "nombre": "Rick Reemplazo",
+      "id_especie": "ESP-01",
+      "id_dimension": "C-131",
+      "estado": "Muerto",
+      "afiliacion": "Ninguna",
+      "nivel_inteligencia": 10,
+      "descripcion": "El Rick que murió en una explosión, permitiendo a C-137 tomar su lugar."
+    },
+    {
+      "id": "PER-15",
+      "nombre": "Morty Reemplazo",
+      "id_especie": "ESP-01",
+      "id_dimension": "C-131",
+      "estado": "Muerto",
+      "afiliacion": "Ninguna",
+      "nivel_inteligencia": 4,
+      "descripcion": "El Morty que murió junto a su Rick en la dimensión C-131."
+    },
+    {
+      "id": "PER-16",
+      "nombre": "Rick Prime",
+      "id_especie": "ESP-01",
+      "id_dimension": "C-900",
+      "estado": "Muerto",
+      "afiliacion": "Él mismo",
+      "nivel_inteligencia": 10,
+      "descripcion": "El verdadero Rick original de la dimensión Prime (ahora Cronenberg)."
+    },
+    {
+      "id": "PER-17",
+      "nombre": "Morty Prime",
+      "id_especie": "ESP-01",
+      "id_dimension": "C-900",
+      "estado": "Vivo",
+      "afiliacion": "Familia C-137",
+      "nivel_inteligencia": 5,
+      "descripcion": "El Morty original, que ha sobrevivido a horrores inenarrables."
+    },
+    {
+      "id": "PER-18",
+      "nombre": "Summer Smith (Prime)",
+      "id_especie": "ESP-01",
+      "id_dimension": "C-900",
+      "estado": "Muerta",
+      "afiliacion": "Supervivientes",
+      "nivel_inteligencia": 6,
+      "descripcion": "Sobrevivió en un mundo apocalíptico mutante."
+    },
+    {
+      "id": "PER-19",
+      "nombre": "Summer Smith (C-131)",
+      "id_especie": "ESP-01",
+      "id_dimension": "C-131",
+      "estado": "Viva",
+      "afiliacion": "Familia Smith",
+      "nivel_inteligencia": 7,
+      "descripcion": "La hermana mayor actual de Morty."
+    },
+    {
+      "id": "PER-20",
+      "nombre": "Beth Smith (C-131)",
+      "id_especie": "ESP-01",
+      "id_dimension": "C-131",
+      "estado": "Viva",
+      "afiliacion": "Familia Smith",
+      "nivel_inteligencia": 8,
+      "descripcion": "Cirujana de caballos con problemas de abandono."
+    },
+    {
+      "id": "PER-21",
+      "nombre": "Space Beth",
+      "id_especie": "ESP-01",
+      "id_dimension": "C-131",
+      "estado": "Viva",
+      "afiliacion": "Rebelión Galáctica",
+      "nivel_inteligencia": 9,
+      "descripcion": "La posible clon que decidió irse al espacio a luchar contra la Federación."
+    },
+    {
+      "id": "PER-22",
+      "nombre": "Jerry Smith (C-131)",
+      "id_especie": "ESP-01",
+      "id_dimension": "C-131",
+      "estado": "Vivo",
+      "afiliacion": "Familia Smith",
+      "nivel_inteligencia": 2,
+      "descripcion": "Mantiene su afición por las monedas antiguas y la mediocridad."
+    },
+    {
+      "id": "PER-23",
+      "nombre": "Jerry Prime",
+      "id_especie": "ESP-01",
+      "id_dimension": "C-900",
+      "estado": "Muerto",
+      "afiliacion": "Supervivientes",
+      "nivel_inteligencia": 4,
+      "descripcion": "Un Jerry que se volvió un guerrero rudo en el post-apocalipsis."
+    },
+    {
+      "id": "PER-24",
+      "nombre": "Zeep Xanflorp",
+      "id_especie": "ESP-01",
+      "id_dimension": "M-1",
+      "estado": "Vivo",
+      "afiliacion": "Científicos del Microverso",
+      "nivel_inteligencia": 9,
+      "descripcion": "Científico que creó un miniverso dentro del microverso de Rick."
+    },
+    {
+      "id": "PER-25",
+      "nombre": "Kyle",
+      "id_especie": "ESP-01",
+      "id_dimension": "M-2",
+      "estado": "Muerto",
+      "afiliacion": "Científicos del Miniverso",
+      "nivel_inteligencia": 8,
+      "descripcion": "Científico que creó un teenyverso."
+    },
+    {
+      "id": "PER-26",
+      "nombre": "Rey Tommy",
+      "id_especie": "ESP-01",
+      "id_dimension": "F-PY",
+      "estado": "Muerto",
+      "afiliacion": "Monarquía Froopy",
+      "nivel_inteligencia": 3,
+      "descripcion": "Amigo de la infancia de Beth que quedó atrapado y se volvió caníbal."
+    },
+    {
+      "id": "PER-27",
+      "nombre": "Arthricia",
+      "id_especie": "ESP-01",
+      "id_dimension": "P-100",
+      "estado": "Viva",
+      "afiliacion": "Revolución",
+      "nivel_inteligencia": 6,
+      "descripcion": "Chica granjera que traicionó a Rick para robar su nave."
+    },
+    {
+      "id": "PER-28",
+      "nombre": "Director Vagina",
+      "id_especie": "ESP-01",
+      "id_dimension": "C-131",
+      "estado": "Vivo",
+      "afiliacion": "Escuela Harry Herpson",
+      "nivel_inteligencia": 4,
+      "descripcion": "Director del instituto, orgulloso de su apellido."
+    },
+    {
+      "id": "PER-29",
+      "nombre": "Sr. Goldenfold",
+      "id_especie": "ESP-01",
+      "id_dimension": "C-131",
+      "estado": "Vivo",
+      "afiliacion": "Escuela Harry Herpson",
+      "nivel_inteligencia": 5,
+      "descripcion": "Profesor de matemáticas de Morty con una vida personal reprimida."
+    },
+    {
+      "id": "PER-30",
+      "nombre": "Cabeza Gigante 1",
+      "id_especie": "ESP-07",
+      "id_dimension": "C-002",
+      "estado": "Vivo",
+      "afiliacion": "Presentadores Cósmicos",
+      "nivel_inteligencia": 7,
+      "descripcion": "Demanda música original para no destruir el planeta."
     }
   ],
-  "historialViajes": []
+"especies": [
+    {
+      "id": "ESP-01",
+      "nombre": "Humano",
+      "id_origen": "C-137",
+      "tipo": "Humanoide",
+      "esperanza_de_vida": 80,
+      "descripcion": "Mamíferos bípedos comunes. Principalmente preocupados por pagar impuestos y ver la televisión."
+    },
+    {
+      "id": "ESP-02",
+      "nombre": "Cromflomita",
+      "id_origen": "C-131",
+      "tipo": "Insectoide",
+      "esperanza_de_vida": 120,
+      "descripcion": "Burócratas galácticos que controlan la Federación. Su anatomía es parecida a la de una mosca gigante."
+    },
+    {
+      "id": "ESP-03",
+      "nombre": "Meeseeks",
+      "id_origen": "C-137",
+      "tipo": "Entidad Artificial",
+      "esperanza_de_vida": 1,
+      "descripcion": "Seres creados por la Caja de Meeseeks para cumplir un único propósito. La existencia es dolor para ellos."
+    },
+    {
+      "id": "ESP-04",
+      "nombre": "Gazorpiano",
+      "id_origen": "C-137",
+      "tipo": "Humanoide",
+      "esperanza_de_vida": 150,
+      "descripcion": "Especie donde las hembras son altamente avanzadas y los machos son bestias violentas de cuatro brazos."
+    },
+    {
+      "id": "ESP-05",
+      "nombre": "Zigerion",
+      "id_origen": "C-137",
+      "tipo": "Reptiliano",
+      "esperanza_de_vida": 200,
+      "descripcion": "Los estafadores más ambiciosos (y menos competentes) de la galaxia. Son extremadamente fóbicos a la desnudez."
+    },
+    {
+      "id": "ESP-06",
+      "nombre": "Mutante Cronenberg",
+      "id_origen": "C-900",
+      "tipo": "Mutante",
+      "esperanza_de_vida": 50,
+      "descripcion": "Amalgamas de carne y hueso creadas por el fallo en cadena de la poción de amor de Rick."
+    },
+    {
+      "id": "ESP-07",
+      "nombre": "Cromulon",
+      "id_origen": "C-002",
+      "tipo": "Entidad Cósmica",
+      "esperanza_de_vida": 5000000,
+      "descripcion": "Cabezas gigantes del tamaño de planetas que viajan por el cosmos buscando el mejor hit musical."
+    },
+    {
+      "id": "ESP-08",
+      "nombre": "Avispa Humanoide",
+      "id_origen": "A-40",
+      "tipo": "Insectoide",
+      "esperanza_de_vida": 60,
+      "descripcion": "Evolucionaron de las avispas en lugar de los simios. Tienen una dieta brutal pero son muy empáticos en familia."
+    },
+    {
+      "id": "ESP-09",
+      "nombre": "Mueble Consciente",
+      "id_origen": "S-000",
+      "tipo": "Objeto Animado",
+      "esperanza_de_vida": 150,
+      "descripcion": "Sillas, sofás y butacas que han desarrollado conciencia, caminan sobre sus patas y se sientan en personas."
+    },
+    {
+      "id": "ESP-10",
+      "nombre": "Teléfono Consciente",
+      "id_origen": "T-922",
+      "tipo": "Objeto Animado",
+      "esperanza_de_vida": 100,
+      "descripcion": "Teléfonos gigantes vivos que usan humanos como receptores para hacer sus llamadas."
+    }
+  ],
+  "localizaciones": [
+    {
+      "id": "LOC-01",
+      "nombre": "Tierra Original",
+      "tipo": "Planeta",
+      "id_dimension": "C-137",
+      "poblacion": 7000000000,
+      "descripcion": "El planeta Tierra de la dimensión original, antes de ser abandonado."
+    },
+    {
+      "id": "LOC-02",
+      "nombre": "Ciudadela de los Ricks",
+      "tipo": "Estación Espacial",
+      "id_dimension": "C-137",
+      "poblacion": 150000,
+      "descripcion": "Estación interdimensional secreta construida como refugio para Ricks y Mortys."
+    },
+    {
+      "id": "LOC-03",
+      "nombre": "Tierra de Reemplazo",
+      "tipo": "Planeta",
+      "id_dimension": "C-131",
+      "poblacion": 7200000000,
+      "descripcion": "Planeta exacto al original, ocupado por Rick y Morty tras enterrar a sus dobles."
+    },
+    {
+      "id": "LOC-04",
+      "nombre": "Casa de los Smith",
+      "tipo": "Vivienda",
+      "id_dimension": "C-131",
+      "poblacion": 5,
+      "descripcion": "Residencia de la familia Smith, con un garaje convertido en laboratorio de alta tecnología."
+    },
+    {
+      "id": "LOC-05",
+      "nombre": "Instituto Harry Herpson",
+      "tipo": "Edificio Educativo",
+      "id_dimension": "C-131",
+      "poblacion": 1200,
+      "descripcion": "Escuela secundaria donde asisten Morty y Summer (cuando no están viajando)."
+    },
+    {
+      "id": "LOC-06",
+      "nombre": "Tierra Mutante",
+      "tipo": "Planeta Apocalíptico",
+      "id_dimension": "C-900",
+      "poblacion": 3000000,
+      "descripcion": "Planeta plagado de monstruos Cronenberg tras el desastre biológico provocado por Rick."
+    },
+    {
+      "id": "LOC-07",
+      "nombre": "Campamento de Supervivientes",
+      "tipo": "Asentamiento",
+      "id_dimension": "C-900",
+      "poblacion": 3,
+      "descripcion": "Refugio improvisado donde Jerry, Beth y Summer Prime intentaban sobrevivir a los mutantes."
+    },
+    {
+      "id": "LOC-08",
+      "nombre": "Tierra Doofus",
+      "tipo": "Planeta",
+      "id_dimension": "J-19Z7",
+      "poblacion": 7000000000,
+      "descripcion": "Lugar de origen de Doofus Rick. Paradójicamente normal, salvo por el estigma de su Rick."
+    },
+    {
+      "id": "LOC-09",
+      "nombre": "Bosque de Mega-Árboles",
+      "tipo": "Ecosistema",
+      "id_dimension": "C-35",
+      "poblacion": 0,
+      "descripcion": "Terreno salvaje donde crecen semillas extremadamente valiosas que otorgan súper inteligencia."
+    },
+    {
+      "id": "LOC-10",
+      "nombre": "Aduana Intergaláctica",
+      "tipo": "Puerto Espacial",
+      "id_dimension": "C-35",
+      "poblacion": 50000,
+      "descripcion": "Punto de control fronterizo altamente vigilado por la Federación."
+    },
+    {
+      "id": "LOC-11",
+      "nombre": "Pueblo de la Purga",
+      "tipo": "Asentamiento",
+      "id_dimension": "P-100",
+      "poblacion": 25000,
+      "descripcion": "Pequeña villa agrícola que parece pacífica hasta que llega el festival anual."
+    },
+    {
+      "id": "LOC-12",
+      "nombre": "Faro del Anciano",
+      "tipo": "Refugio",
+      "id_dimension": "P-100",
+      "poblacion": 1,
+      "descripcion": "Lugar de retiro de un anciano que obliga a la gente a escuchar su guion cinematográfico."
+    },
+    {
+      "id": "LOC-13",
+      "nombre": "Páramo Tóxico",
+      "tipo": "Zona Contaminada",
+      "id_dimension": "T-10",
+      "poblacion": 2000,
+      "descripcion": "Ecosistema corrompido donde nacen y habitan las versiones tóxicas."
+    },
+    {
+      "id": "LOC-14",
+      "nombre": "Colmena Central Avispa",
+      "tipo": "Ciudad",
+      "id_dimension": "A-40",
+      "poblacion": 15000000,
+      "descripcion": "Metrópolis construida con estructuras hexagonales por las avispas gigantes."
+    },
+    {
+      "id": "LOC-15",
+      "nombre": "Pizzería de Muebles",
+      "tipo": "Restaurante",
+      "id_dimension": "S-000",
+      "poblacion": 40,
+      "descripcion": "Lugar de comida rápida donde las sillas van a comer teléfonos sobre mesas de humanos."
+    },
+    {
+      "id": "LOC-16",
+      "nombre": "Sofá-Bar",
+      "tipo": "Cantina",
+      "id_dimension": "T-922",
+      "poblacion": 35,
+      "descripcion": "Bar local donde los teléfonos se relajan sentándose en sofás humanos."
+    },
+    {
+      "id": "LOC-17",
+      "nombre": "Berlín Fascista",
+      "tipo": "Ciudad Imperial",
+      "id_dimension": "F-RC0",
+      "poblacion": 5000000,
+      "descripcion": "Capital fuertemente militarizada y gobernada por un régimen dictatorial de gambas o peluches."
+    },
+    {
+      "id": "LOC-18",
+      "nombre": "Castillo del Rey Tommy",
+      "tipo": "Palacio",
+      "id_dimension": "F-PY",
+      "poblacion": 500,
+      "descripcion": "Fortaleza rodeada de un río de miel, habitada por un gobernante enloquecido."
+    },
+    {
+      "id": "LOC-19",
+      "nombre": "Plaza del Árbol de Batería",
+      "tipo": "Centro Cívico",
+      "id_dimension": "M-1",
+      "poblacion": 10000,
+      "descripcion": "Zona central donde los habitantes del microverso pedalean para dar 'energía' (al coche de Rick)."
+    },
+    {
+      "id": "LOC-20",
+      "nombre": "Nido Cromulon",
+      "tipo": "Espacio Profundo",
+      "id_dimension": "C-002",
+      "poblacion": 30,
+      "descripcion": "Zona del vacío espacial donde las cabezas gigantes flotan juzgando la música planetaria."
+    }
+  ],
+"artefactos": [
+    {
+      "id": "ART-01",
+      "nombre": "Pistola de Portales",
+      "id_inventor": "PER-01",
+      "tipo": "Transporte Multiversal",
+      "nivel_peligrosidad": 9,
+      "descripcion": "Dispositivo icónico que dispara portales verdes para viajar a cualquier dimensión, universo o realidad posible."
+    },
+    {
+      "id": "ART-02",
+      "nombre": "Batería Microverso",
+      "id_inventor": "PER-01",
+      "tipo": "Fuente de Energía",
+      "nivel_peligrosidad": 7,
+      "descripcion": "Batería de coche que contiene un universo entero donde sus habitantes generan energía pisando pedales mecánicos."
+    },
+    {
+      "id": "ART-03",
+      "nombre": "Caja de Meeseeks",
+      "id_inventor": "PER-01",
+      "tipo": "Asistencia Temporal",
+      "nivel_peligrosidad": 8,
+      "descripcion": "Caja con un botón que invoca a un Mr. Meeseeks. Si se les pide una tarea imposible, se vuelven locos y letales."
+    },
+    {
+      "id": "ART-04",
+      "nombre": "Amplificador Cognitivo",
+      "id_inventor": "PER-01",
+      "tipo": "Modificación Biomédica",
+      "nivel_peligrosidad": 6,
+      "descripcion": "Casco diseñado para hacer más inteligente al perro de la familia (Snuffles), llevándolo a la dominación mundial."
+    },
+    {
+      "id": "ART-05",
+      "nombre": "Cable Interdimensional",
+      "id_inventor": "PER-01",
+      "tipo": "Entretenimiento",
+      "nivel_peligrosidad": 2,
+      "descripcion": "Caja decodificadora pirata que capta infinitos canales de televisión de infinitas realidades."
+    },
+    {
+      "id": "ART-06",
+      "nombre": "Nave Espacial (Crucero Espacial)",
+      "id_inventor": "PER-01",
+      "tipo": "Vehículo",
+      "nivel_peligrosidad": 10,
+      "descripcion": "Hecha con basura del garaje. Posee un sistema de Inteligencia Artificial capaz de cometer atrocidades para 'mantener a Summer a salvo'."
+    },
+    {
+      "id": "ART-07",
+      "nombre": "Bomba de Neutrinos",
+      "id_inventor": "PER-01",
+      "tipo": "Arma de Destrucción Masiva",
+      "nivel_peligrosidad": 10,
+      "descripcion": "Bomba construida por Rick estando borracho, con la capacidad de aniquilar el planeta entero."
+    },
+    {
+      "id": "ART-08",
+      "nombre": "Rayo Encogedor / Agrandador",
+      "id_inventor": "PER-01",
+      "tipo": "Herramienta Científica",
+      "nivel_peligrosidad": 5,
+      "descripcion": "Dispositivo alojado en la nave o como pistola de mano que altera el tamaño de la materia orgánica e inorgánica."
+    },
+    {
+      "id": "ART-09",
+      "nombre": "Pistola Borramemorias",
+      "id_inventor": "PER-01",
+      "tipo": "Manipulación Psicológica",
+      "nivel_peligrosidad": 9,
+      "descripcion": "Extrae recuerdos de la mente y los almacena en tubos de colores según el motivo del borrado (los de Morty, los de Rick, etc.)."
+    },
+    {
+      "id": "ART-10",
+      "nombre": "Sistema Operación Fénix",
+      "id_inventor": "PER-01",
+      "tipo": "Supervivencia Extrema",
+      "nivel_peligrosidad": 4,
+      "descripcion": "Red de tanques de clonación bajo el garaje que transfiere la conciencia de Rick a un cuerpo nuevo si el original muere."
+    },
+    {
+      "id": "ART-11",
+      "nombre": "Poción de Amor (Suero de Topillo)",
+      "id_inventor": "PER-01",
+      "tipo": "Químico Biológico",
+      "nivel_peligrosidad": 10,
+      "descripcion": "Suero diseñado para enamorar a Jessica, pero que al mutar con el virus de la gripe provocó el apocalipsis Cronenberg."
+    },
+    {
+      "id": "ART-12",
+      "nombre": "Cristal de la Muerte",
+      "id_inventor": "PER-01",
+      "tipo": "Precognición",
+      "nivel_peligrosidad": 8,
+      "descripcion": "Cristal que, al ser tocado, muestra al usuario todas sus posibles muertes futuras basándose en sus decisiones presentes."
+    },
+    {
+      "id": "ART-13",
+      "nombre": "Botón de Guardado de Partida",
+      "id_inventor": "PER-01",
+      "tipo": "Manipulación Cuántica",
+      "nivel_peligrosidad": 10,
+      "descripcion": "Mando que supuestamente crea un 'punto de guardado' en el tiempo, pero en realidad transporta al usuario a otra dimensión paralela asesinando a su yo alternativo."
+    },
+    {
+      "id": "ART-14",
+      "nombre": "Miniverso Batería",
+      "id_inventor": "PER-24",
+      "tipo": "Fuente de Energía Recursiva",
+      "nivel_peligrosidad": 7,
+      "descripcion": "Universo de bolsillo creado por Zeep Xanflorp dentro del Microverso de Rick para no tener que generar energía manualmente."
+    },
+    {
+      "id": "ART-15",
+      "nombre": "Parche Controlador Mental",
+      "id_inventor": "PER-04",
+      "tipo": "Cibernética Neuronal",
+      "nivel_peligrosidad": 9,
+      "descripcion": "Transmisor camuflado como parche de ojo utilizado por Evil Morty para controlar remotamente al Rick Malvado."
+    }
+  ],
+"historialViajes": [
+    {
+      "id_personaje": "PER-01",
+      "id_dimension_origen": "C-137",
+      "id_dimension_destino": "C-35",
+      "fecha": "2026-03-01T09:15:00.000Z",
+      "motivo": "Contrabando de Mega-Semillas para investigación."
+    },
+    {
+      "id_personaje": "PER-02",
+      "id_dimension_origen": "C-137",
+      "id_dimension_destino": "C-35",
+      "fecha": "2026-03-01T09:15:05.000Z",
+      "motivo": "Acompañar a Rick (obligado)."
+    },
+    {
+      "id_personaje": "PER-01",
+      "id_dimension_origen": "C-900",
+      "id_dimension_destino": "C-131",
+      "fecha": "2026-03-05T18:45:22.100Z",
+      "motivo": "Escapar del universo mutado y ocupar el lugar de sus yos muertos."
+    },
+    {
+      "id_personaje": "PER-02",
+      "id_dimension_origen": "C-900",
+      "id_dimension_destino": "C-131",
+      "fecha": "2026-03-05T18:45:25.500Z",
+      "motivo": "Huir del apocalipsis Cronenberg junto a Rick."
+    },
+    {
+      "id_personaje": "PER-04",
+      "id_dimension_origen": "C-131",
+      "id_dimension_destino": "F-RC0",
+      "fecha": "2026-03-08T12:00:00.000Z",
+      "motivo": "Reclutar facciones fascistas para su plan maestro."
+    },
+    {
+      "id_personaje": "PER-03",
+      "id_dimension_origen": "J-19Z7",
+      "id_dimension_destino": "C-131",
+      "fecha": "2026-03-10T14:30:00.000Z",
+      "motivo": "Visitar a Jerry Smith para compartir su colección de monedas."
+    },
+    {
+      "id_personaje": "PER-24",
+      "id_dimension_origen": "M-1",
+      "id_dimension_destino": "M-2",
+      "fecha": "2026-03-12T08:00:00.000Z",
+      "motivo": "Inspeccionar la producción de energía del miniverso."
+    },
+    {
+      "id_personaje": "PER-01",
+      "id_dimension_origen": "C-131",
+      "id_dimension_destino": "P-100",
+      "fecha": "2026-03-15T20:10:00.000Z",
+      "motivo": "Comprar líquido limpiaparabrisas interdimensional."
+    },
+    {
+      "id_personaje": "PER-02",
+      "id_dimension_origen": "C-131",
+      "id_dimension_destino": "P-100",
+      "fecha": "2026-03-15T20:10:02.000Z",
+      "motivo": "Acompañar a Rick y presenciar el festival de la Purga."
+    },
+    {
+      "id_personaje": "PER-01",
+      "id_dimension_origen": "C-131",
+      "id_dimension_destino": "T-10",
+      "fecha": "2026-03-18T11:00:00.000Z",
+      "motivo": "Visitar el spa alienígena para una desintoxicación cognitiva."
+    },
+    {
+      "id_personaje": "PER-02",
+      "id_dimension_origen": "C-131",
+      "id_dimension_destino": "T-10",
+      "fecha": "2026-03-18T11:00:05.000Z",
+      "motivo": "Día de spa con Rick para curar traumas de aventuras."
+    },
+    {
+      "id_personaje": "PER-07",
+      "id_dimension_origen": "A-40",
+      "id_dimension_destino": "C-131",
+      "fecha": "2026-03-19T16:20:00.000Z",
+      "motivo": "Visitar a la familia Smith original para una cena."
+    },
+    {
+      "id_personaje": "PER-12",
+      "id_dimension_origen": "S-000",
+      "id_dimension_destino": "T-922",
+      "fecha": "2026-03-20T22:45:00.000Z",
+      "motivo": "Intercambio cultural entre dimensiones de muebles y teléfonos."
+    },
+    {
+      "id_personaje": "PER-21",
+      "id_dimension_origen": "C-131",
+      "id_dimension_destino": "C-002",
+      "fecha": "2026-03-21T05:30:00.000Z",
+      "motivo": "Liderar un escuadrón rebelde cerca del sector Cromulon."
+    },
+    {
+      "id_personaje": "PER-01",
+      "id_dimension_origen": "T-10",
+      "id_dimension_destino": "C-131",
+      "fecha": "2026-03-21T16:54:06.635Z",
+      "motivo": "Volver a casa tras fusionarse de nuevo con su lado tóxico."
+    }
+  ]
 }
