@@ -80,6 +80,12 @@ export class GestorMultiverso implements ICreador, IEliminador, IModificador, IC
   }
   
   /**
+   * Getter para los artefactos desplegados
+   */
+  public get artefactosDesplegados(): { id_artefacto: string, id_localizacion: string }[] {
+    return this.#artefactosDesplegados;
+  }
+  /**
    * Función para añadir a la lista un nuevo personaje
    * @param nuevoPersonaje - Personaje a añadir 
    * * @throws Error - Lanza un error si el ID ya existe en el multiverso
@@ -191,7 +197,6 @@ export class GestorMultiverso implements ICreador, IEliminador, IModificador, IC
     if (this.#dimensiones.some(dim => dim.id === nuevaDimension.id)) {
       throw new Error(`ERROR: Ya existe una dimensión con el ID ${nuevaDimension.id}`);
     }
-
     this.#dimensiones.push(nuevaDimension);
   }
 
@@ -558,5 +563,3 @@ export class GestorMultiverso implements ICreador, IEliminador, IModificador, IC
   }
 
 }
-
-
