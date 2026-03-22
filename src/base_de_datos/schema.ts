@@ -73,7 +73,7 @@ export interface RegistroViajeData {
 }
 
 /**
- * Esquema global que define la estructura completa de la base de datos Lowdb
+ * Esquema que define la estructura completa de la base de datos Lowdb
  */
 export interface EntidadesSchema {
   dimensiones: DimensionData[];

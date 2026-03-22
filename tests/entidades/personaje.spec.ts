@@ -2,23 +2,14 @@ import { describe, expect, test } from "vitest";
 import { Personaje } from "../../src/entidades/personaje.js";
 
 describe("Clase Personaje", () => {
-  const id_valido = "PER-001";
-  const nombre_valido = "Rick Sanchez";
-  const esp_referencia = "ESP-001";
-  const dim_referencia = "C-137";
-  const inteligencia_valida = 10;
+  const id = "PER-001";
+  const nombre = "Rick Sanchez";
+  const especie = "ESP-001";
+  const dimension = "C-137";
+  const inteligencia = 10;
 
   test("Creación de instancia y getters básicos", () => {
-    const personaje = new Personaje(
-      id_valido,
-      nombre_valido,
-      esp_referencia,
-      dim_referencia,
-      "Vivo",
-      "Consejo de Ricks",
-      inteligencia_valida,
-      "El hombre más inteligente del universo."
-    );
+    const personaje = new Personaje(id, nombre, especie, dimension, "Vivo", "Consejo de Ricks", inteligencia, "El hombre más inteligente del universo.");
 
     expect(personaje.id).toBe("PER-001");
     expect(personaje.nombre).toBe("Rick Sanchez");
@@ -30,30 +21,30 @@ describe("Clase Personaje", () => {
 
   test("Debería lanzar error si el ID de personaje no comienza por PER-", () => {
     expect(() => {
-      new Personaje("RICK-001", "Rick", esp_referencia, dim_referencia, "Vivo", "Independiente", 10, "");
+      new Personaje("RICK-001", "Rick", especie, dimension, "Vivo", "Independiente", 10, "");
     }).toThrow("ERROR: ID introducido inválido");
   })
 
-  test("Debería lanzar error si la referencia de especie es inválida", () => {
+  test("Debería lanzar error si la especie es inválida", () => {
     expect(() => {
-      new Personaje(id_valido, nombre_valido, "HUMANO", dim_referencia, "Vivo", "Independiente", 10, "");
+      new Personaje(id, nombre, "HUMANO", dimension, "Vivo", "Independiente", 10, "");
     }).toThrow("ERROR: ID de la especie introducido inválido");
   })
 
-  test("Debería lanzar error si la referencia de dimensión es inválida", () => {
+  test("Debería lanzar error si la dimensión es inválida", () => {
     expect(() => {
-      new Personaje(id_valido, nombre_valido, esp_referencia, "DIM-C137", "Vivo", "Independiente", 10, "");
+      new Personaje(id, nombre, especie, "DIM-C137", "Vivo", "Independiente", 10, "");
     }).toThrow("ERROR: ID de la dimensión introducido inválido");
   })
 
   test("Debería lanzar error si la inteligencia está fuera de rango (1-10) en constructor", () => {
     expect(() => {
-      new Personaje(id_valido, nombre_valido, esp_referencia, dim_referencia, "Vivo", "Independiente", 11, "");
+      new Personaje(id, nombre, especie, dimension, "Vivo", "Independiente", 11, "");
     }).toThrow("ERROR: Nivel de inteligencia fuera del rango permitido (1-10)");
   })
 
   test("Setters: modificación de estado, afiliación y nombre", () => {
-    const p = new Personaje(id_valido, "Morty Smith", esp_referencia, dim_referencia, "Vivo", "Familia Smith", 3, "Nieto de Rick");
+    const p = new Personaje(id, "Morty Smith", especie, dimension, "Vivo", "Familia Smith", 3, "Nieto de Rick");
     
     p.nombre = "Evil Morty";
     p.estado = "Desconocido";
@@ -67,7 +58,7 @@ describe("Clase Personaje", () => {
   })
 
   test("Setter id_especie: Cambio de especie", () => {
-    const rick = new Personaje(id_valido, "Rick Sanchez", "ESP-001", dim_referencia, "Vivo", "Independiente", 10, "");
+    const rick = new Personaje(id, "Rick Sanchez", "ESP-001", dimension, "Vivo", "Independiente", 10, "");
     
     rick.id_especie = "ESP-002";
     expect(rick.id_especie).toBe("ESP-002");
@@ -76,7 +67,7 @@ describe("Clase Personaje", () => {
   })
 
   test("Setter id_dimension: Cambio de dimensión", () => {
-    const morty = new Personaje("PER-002", "Morty", esp_referencia, dim_referencia, "Vivo", "Familia Smith", 3, "");
+    const morty = new Personaje("PER-002", "Morty", especie, dimension, "Vivo", "Familia Smith", 3, "");
     
     morty.id_dimension = "C-137";
     expect(morty.id_dimension).toBe("C-137");
@@ -84,7 +75,7 @@ describe("Clase Personaje", () => {
   })
 
   test("Setter nivel_inteligencia: validación de rango", () => {
-    const morty = new Personaje("PER-002", "Morty", esp_referencia, dim_referencia, "Vivo", "Familia Smith", 3, "");
+    const morty = new Personaje("PER-002", "Morty", especie, dimension, "Vivo", "Familia Smith", 3, "");
     
     morty.nivel_inteligencia = 9;
     expect(morty.nivel_inteligencia).toBe(9);

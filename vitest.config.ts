@@ -8,7 +8,8 @@ export default defineConfig({
         'src/base_de_datos/*.json', // Excluimos la base de datos de comprobaciones
         '**/*.json',                
         'node_modules/**',
-        'dist/**'
+        'dist/**',
+        'src/main.ts' // Ignoramos el main también
       ]
     }
   }

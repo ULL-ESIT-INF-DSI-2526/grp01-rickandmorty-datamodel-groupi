@@ -7,12 +7,7 @@ import { Personaje } from "../../src/entidades/personaje.js";
 import { Localizacion } from "../../src/entidades/localizacion.js";
 import { Artefacto } from "../../src/entidades/artefacto.js";
 import { Especie } from "../../src/entidades/especie.js";
-import {
-  menuRegistrarViaje,
-  menuDesplegarArtefacto,
-  menuNeutralizarArtefacto,
-  menuEjecutarExperimento,
-} from "../../src/menu/eventos.js"; 
+import { menuRegistrarViaje, menuDesplegarArtefacto, menuNeutralizarArtefacto, menuEjecutarExperimento } from "../../src/menu/eventos.js"; 
 import { menuCrearDimension } from "../../src/menu/creacion.js";
 
 // Mockeamos prompts y pausas
@@ -24,7 +19,7 @@ vi.mock("../../src/menu/creacion.js", () => ({
   menuCrearDimension: vi.fn(),
 }));
 
-describe("Menú de Eventos (Viajes, Artefactos y Experimentos)", () => {
+describe("Menú de eventos", () => {
   let gestor: GestorMultiverso;
   let repositorio: IRepositorio;
   let espiaLog: ReturnType<typeof vi.spyOn>;
@@ -66,9 +61,9 @@ describe("Menú de Eventos (Viajes, Artefactos y Experimentos)", () => {
       expect(gestor.todosLosViajes.length).toBe(1);
       expect(repositorio.guardar).toHaveBeenCalledTimes(1);
       expect(espiaLog).toHaveBeenCalledWith("Sistema: El viaje ha sido procesado y guardado.");
-    });
+    })
 
-    test("Debería capturar el error REAL del gestor si el personaje no existe", async () => {
+    test("Debería capturar el error si el personaje no existe", async () => {
       vi.mocked(prompts).mockResolvedValueOnce({ 
         personaje: "PER-99", destino: "C-131", motivo: "Huir" 
       });
@@ -77,7 +72,7 @@ describe("Menú de Eventos (Viajes, Artefactos y Experimentos)", () => {
 
       expect(espiaError).toHaveBeenCalledWith("ERROR: El personaje no existe en el multiverso");
       expect(repositorio.guardar).not.toHaveBeenCalled();
-    });
+    })
 
     test("Debería silenciar el error si no es una instancia de Error", async () => {
       vi.mocked(prompts).mockResolvedValueOnce({ 
@@ -88,7 +83,7 @@ describe("Menú de Eventos (Viajes, Artefactos y Experimentos)", () => {
       await menuRegistrarViaje(gestor, repositorio);
       
       expect(espiaError).not.toHaveBeenCalled(); 
-    });
+    })
   });
 
   // TESTS DE DESPLEGAR ARTEFACTO
@@ -102,21 +97,21 @@ describe("Menú de Eventos (Viajes, Artefactos y Experimentos)", () => {
 
       expect(gestor.artefactosDesplegados.length).toBe(1);
       expect(espiaLog).toHaveBeenCalledWith("Sistema: Artefacto desplegado correctamente en la localización.");
-    });
+    })
 
-    test("Debería salir sin hacer nada si falta el id del artefacto (cortocircuito ||)", async () => {
+    test("Debería salir sin hacer nada si falta el id del artefacto", async () => {
       vi.mocked(prompts).mockResolvedValueOnce({ id_localizacion: "LOC-01" });
       await menuDesplegarArtefacto(gestor);
       expect(gestor.artefactosDesplegados.length).toBe(0);
-    });
+    })
 
-    test("Debería salir sin hacer nada si falta el id de la localización (cortocircuito ||)", async () => {
+    test("Debería salir sin hacer nada si falta el id de la localización", async () => {
       vi.mocked(prompts).mockResolvedValueOnce({ id_artefacto: "ART-01" });
       await menuDesplegarArtefacto(gestor);
       expect(gestor.artefactosDesplegados.length).toBe(0);
-    });
+    })
 
-    test("Debería capturar el error REAL del gestor si el artefacto no existe", async () => {
+    test("Debería capturar el error si el artefacto no existe", async () => {
       vi.mocked(prompts).mockResolvedValueOnce({ 
         id_artefacto: "ART-99", id_localizacion: "LOC-01" 
       });
@@ -124,14 +119,14 @@ describe("Menú de Eventos (Viajes, Artefactos y Experimentos)", () => {
       await menuDesplegarArtefacto(gestor);
 
       expect(espiaError).toHaveBeenCalledWith("ERROR: Artefacto no encontrado");
-    });
+    })
 
     test("Debería silenciar el error si no es una instancia de Error", async () => {
       vi.mocked(prompts).mockResolvedValueOnce({ id_artefacto: "ART-01", id_localizacion: "LOC-01" });
       vi.spyOn(gestor, "despliegueArtefacto").mockImplementationOnce(() => { throw "Error raro"; });
       await menuDesplegarArtefacto(gestor);
       expect(espiaError).not.toHaveBeenCalled(); 
-    });
+    })
   });
 
   // TESTS DE NEUTRALIZAR ARTEFACTO
@@ -149,21 +144,21 @@ describe("Menú de Eventos (Viajes, Artefactos y Experimentos)", () => {
 
       expect(gestor.artefactosDesplegados.length).toBe(0);
       expect(espiaLog).toHaveBeenCalledWith("Sistema: Artefacto ART-01 neutralizado correctamente y retirado de la localización");
-    });
+    })
 
-    test("Debería salir sin hacer nada si falta el id del artefacto (cortocircuito ||)", async () => {
+    test("Debería salir sin hacer nada si falta el id del artefacto", async () => {
       vi.mocked(prompts).mockResolvedValueOnce({ id_localizacion: "LOC-01" });
       await menuNeutralizarArtefacto(gestor);
       expect(gestor.artefactosDesplegados.length).toBe(1); 
-    });
+    })
 
-    test("Debería salir sin hacer nada si falta el id de la localización (cortocircuito ||)", async () => {
+    test("Debería salir sin hacer nada si falta el id de la localización", async () => {
       vi.mocked(prompts).mockResolvedValueOnce({ id_artefacto: "ART-01" });
       await menuNeutralizarArtefacto(gestor);
       expect(gestor.artefactosDesplegados.length).toBe(1); 
-    });
+    })
 
-    test("Debería capturar el error REAL del gestor si no estaba desplegado", async () => {
+    test("Debería capturar el error si no estaba desplegado", async () => {
       vi.mocked(prompts).mockResolvedValueOnce({ 
         id_artefacto: "ART-99", id_localizacion: "LOC-01" 
       });
@@ -171,29 +166,29 @@ describe("Menú de Eventos (Viajes, Artefactos y Experimentos)", () => {
       await menuNeutralizarArtefacto(gestor);
 
       expect(espiaError).toHaveBeenCalledWith("ERROR: El artefacto no se encuentra desplegado en esa localización");
-    });
+    })
 
     test("Debería silenciar el error si no es una instancia de Error", async () => {
       vi.mocked(prompts).mockResolvedValueOnce({ id_artefacto: "ART-01", id_localizacion: "LOC-01" });
       vi.spyOn(gestor, "neutralizarArtefacto").mockImplementationOnce(() => { throw "Error raro"; });
       await menuNeutralizarArtefacto(gestor);
       expect(espiaError).not.toHaveBeenCalled(); 
-    });
+    })
   });
 
   // TESTS DE EXPERIMENTO
   describe("menuEjecutarExperimento", () => {
-    test("Debería salir si el usuario no introduce tipo (cortocircuito ||)", async () => {
+    test("Debería salir si el usuario no introduce tipo", async () => {
       vi.mocked(prompts).mockResolvedValueOnce({});
       await menuEjecutarExperimento(gestor, repositorio);
       expect(prompts).toHaveBeenCalledTimes(1); 
-    });
+    })
 
-    test("Debería salir si el usuario elige cancelar (cortocircuito ||)", async () => {
+    test("Debería salir si el usuario elige cancelar", async () => {
       vi.mocked(prompts).mockResolvedValueOnce({ tipo: "cancelar" });
       await menuEjecutarExperimento(gestor, repositorio);
       expect(prompts).toHaveBeenCalledTimes(1);
-    });
+    })
 
     test("Debería destruir una dimensión correctamente", async () => {
       vi.mocked(prompts)
@@ -205,9 +200,9 @@ describe("Menú de Eventos (Viajes, Artefactos y Experimentos)", () => {
       expect(gestor.dimensiones[0].estado).toBe("Destruida"); 
       expect(repositorio.guardar).toHaveBeenCalledTimes(1);
       expect(espiaLog).toHaveBeenCalledWith("\n La dimensión C-137 ha colapsado y su estado ahora es 'Destruida'");
-    });
+    })
 
-    test("No debería hacer nada si elige destruir pero no pone ID (if id)", async () => {
+    test("No debería hacer nada si elige destruir pero no pone ID", async () => {
       vi.mocked(prompts)
         .mockResolvedValueOnce({ tipo: "destruir" })
         .mockResolvedValueOnce({}); 
@@ -215,9 +210,9 @@ describe("Menú de Eventos (Viajes, Artefactos y Experimentos)", () => {
       await menuEjecutarExperimento(gestor, repositorio);
 
       expect(repositorio.guardar).not.toHaveBeenCalled();
-    });
+    })
 
-    test("Debería capturar el error REAL si intenta destruir una dimensión que no existe", async () => {
+    test("Debería capturar el error si intenta destruir una dimensión que no existe", async () => {
       vi.mocked(prompts)
         .mockResolvedValueOnce({ tipo: "destruir" })
         .mockResolvedValueOnce({ id: "FALSA" });
@@ -225,7 +220,7 @@ describe("Menú de Eventos (Viajes, Artefactos y Experimentos)", () => {
       await menuEjecutarExperimento(gestor, repositorio);
 
       expect(espiaError).toHaveBeenCalledWith("ERROR: La dimensión a destruir no existe en el multiverso");
-    });
+    })
 
     test("Debería silenciar el error si en destruir no es una instancia de Error", async () => {
       vi.mocked(prompts).mockResolvedValueOnce({ tipo: "destruir" }).mockResolvedValueOnce({ id: "C-137" });
@@ -234,7 +229,7 @@ describe("Menú de Eventos (Viajes, Artefactos y Experimentos)", () => {
       await menuEjecutarExperimento(gestor, repositorio);
       
       expect(espiaError).not.toHaveBeenCalled(); 
-    });
+    })
 
     test("Debería llamar al menú de crear dimensión si elige crear", async () => {
       vi.mocked(prompts).mockResolvedValueOnce({ tipo: "crear" });
@@ -243,16 +238,16 @@ describe("Menú de Eventos (Viajes, Artefactos y Experimentos)", () => {
 
       expect(espiaLog).toHaveBeenCalledWith("\n El experimento ha creado una nueva dimensión");
       expect(menuCrearDimension).toHaveBeenCalledWith(gestor, repositorio);
-    });
-test("Debería ignorar un tipo de experimento desconocido", async () => {
+    })
+
+    test("Debería ignorar un tipo de experimento desconocido", async () => {
       vi.mocked(prompts).mockResolvedValueOnce({ tipo: "mutacion_extraña" });
 
       await menuEjecutarExperimento(gestor, repositorio);
 
-      // Como no es un tipo válido, no debe guardar nada ni llamar a crear dimensión
       expect(repositorio.guardar).not.toHaveBeenCalled();
       expect(menuCrearDimension).not.toHaveBeenCalled();
-    });
+    })
     
   });
 });

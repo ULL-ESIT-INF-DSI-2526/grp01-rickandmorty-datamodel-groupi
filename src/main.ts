@@ -66,7 +66,7 @@ async function iniciarMultiverso() {
   await menu.iniciar();
 }
 
-// Ejecución de la función principal con control global de errores
+// Ejecución de la función principal con control de errores
 iniciarMultiverso().catch((error: unknown) => {
   if (error instanceof Error) {
     console.error("ERROR FATAL AL CARGAR EL MULTIVERSO:", error.message);

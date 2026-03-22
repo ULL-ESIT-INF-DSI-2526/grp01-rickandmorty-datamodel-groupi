@@ -215,8 +215,8 @@ export async function menuConsultarPersonajes(gestor: GestorMultiverso): Promise
 }
 
 /**
- * Función para consultar los artefactos (inventos).
- * Permite filtrar por nombre, tipo, inventor o peligrosidad.
+ * Función para consultar los artefactos (inventos)
+ * Permite filtrar por nombre, tipo, inventor o peligrosidad
  * @param gestor - El gestor del multiverso para consultar los datos
  */
 export async function menuConsultarArtefactos(gestor: GestorMultiverso): Promise<void> {

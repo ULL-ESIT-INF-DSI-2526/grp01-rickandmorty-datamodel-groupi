@@ -50,7 +50,7 @@ export interface IConsultor {
 }
 
 /**
- * Métodos para gestionar eventos y sucesos
+ * Métodos para gestionar eventos
  */
 export interface IGestorEventos {
   registrarViaje(id_personaje: string, id_dimension_destino: string, motivo: string): RegistroViaje;

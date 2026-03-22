@@ -19,18 +19,18 @@ describe("Clase RepositorioMultiverso", () => {
     const loc = new Localizacion("LOC-001", "Citadela", "Estación", "C-137", 100, "Test");
     const art = new Artefacto("ART-001", "Pistola", "PER-001", "Arma", 10, "Test");
     
-    const fechaExacta = new Date("2026-03-22T05:42:00.000Z");
+    const fecha = new Date("2026-03-22T05:42:00.000Z");
     const viaje: RegistroViaje = {
       id_personaje: "PER-001",
       id_dimension_origen: "C-137",
       id_dimension_destino: "C-131",
-      fecha: fechaExacta,
+      fecha: fecha,
       motivo: "Testeo unitario"
     };
 
     const gestor = new GestorMultiverso([dim], [per], [esp], [loc], [art], [viaje]);
 
-    const fakeSchema: EntidadesSchema = {
+    const SchemaFalso: EntidadesSchema = {
       dimensiones: [], 
       personajes: [], 
       especies: [], 
@@ -39,16 +39,16 @@ describe("Clase RepositorioMultiverso", () => {
       historialViajes: []
     };
 
-    // Creamos una falsa base de datos Lowdb
+    // Creamos una base de datos falsa
     const dbMock = {
-      data: fakeSchema,
+      data: SchemaFalso,
       write: vi.fn().mockResolvedValue(undefined)
     } as unknown as Low<EntidadesSchema>;
 
     const repositorio = new RepositorioMultiverso(gestor, dbMock);
     await repositorio.guardar();
 
-    // COMPROBACIONES
+    // COMPROBACIONES (que guarde todo y formatee bien la fecha)
     expect(dbMock.write).toHaveBeenCalledTimes(1);
 
     expect(dbMock.data?.dimensiones.length).toBe(1);

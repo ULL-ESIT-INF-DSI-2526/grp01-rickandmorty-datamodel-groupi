@@ -7,18 +7,12 @@ import { Especie } from "../../src/entidades/especie.js";
 import { Localizacion } from "../../src/entidades/localizacion.js";
 import { Artefacto } from "../../src/entidades/artefacto.js";
 import { IRepositorio } from "../../src/interfaces/operaciones.js";
-import { 
-  menuModificarPersonaje, 
-  menuModificarDimension, 
-  menuModificarEspecie, 
-  menuModificarLocalizacion, 
-  menuModificarArtefacto 
-} from "../../src/menu/modificacion.js";
+import { menuModificarPersonaje, menuModificarDimension, menuModificarEspecie, menuModificarLocalizacion, menuModificarArtefacto } from "../../src/menu/modificacion.js";
 
 vi.mock("prompts");
 vi.mock("../../src/menu/utilidades.js", () => ({ pausa: vi.fn() }));
 
-describe("Pruebas de Menús de Modificaciones", () => {
+describe("Pruebas de modificación", () => {
   let gestor: GestorMultiverso;
   let repositorio: IRepositorio;
 
@@ -62,7 +56,7 @@ describe("Pruebas de Menús de Modificaciones", () => {
     vi.mocked(prompts).mockResolvedValueOnce({ id: "PER-101" }).mockResolvedValueOnce({ nombre: "Rick" });
     vi.spyOn(gestor, "modificarPersonaje").mockImplementationOnce(() => { throw "Error de string"; });
     await menuModificarPersonaje(gestor, repositorio);
-  });
+  })
 
   test("menuModificarDimension: ", async () => {
     vi.mocked(prompts).mockResolvedValueOnce({ id: "" });
@@ -89,7 +83,7 @@ describe("Pruebas de Menús de Modificaciones", () => {
     vi.mocked(prompts).mockResolvedValueOnce({ id: "C-137" }).mockResolvedValueOnce({ nombre: "Prueba" });
     vi.spyOn(gestor, "modificarDimension").mockImplementationOnce(() => { throw 123; });
     await menuModificarDimension(gestor, repositorio);
-  });
+  })
 
   test("menuModificarEspecie: ", async () => {
     vi.mocked(prompts).mockResolvedValueOnce({ id: "" });
@@ -113,7 +107,7 @@ describe("Pruebas de Menús de Modificaciones", () => {
     vi.mocked(prompts).mockResolvedValueOnce({ id: "ESP-101" }).mockResolvedValueOnce({ nombre: "Lagarto" });
     vi.spyOn(gestor, "modificarEspecie").mockImplementationOnce(() => { throw null; });
     await menuModificarEspecie(gestor, repositorio);
-  });
+  })
 
   test("menuModificarLocalizacion: ", async () => {
     vi.mocked(prompts).mockResolvedValueOnce({ id: "" });
@@ -137,7 +131,7 @@ describe("Pruebas de Menús de Modificaciones", () => {
     vi.mocked(prompts).mockResolvedValueOnce({ id: "LOC-01" }).mockResolvedValueOnce({ nombre: "Ciudad" });
     vi.spyOn(gestor, "modificarLocalizacion").mockImplementationOnce(() => { throw false; });
     await menuModificarLocalizacion(gestor, repositorio);
-  });
+  })
 
   test("menuModificarArtefacto:", async () => {
     vi.mocked(prompts).mockResolvedValueOnce({ id: "" });
@@ -161,5 +155,5 @@ describe("Pruebas de Menús de Modificaciones", () => {
     vi.mocked(prompts).mockResolvedValueOnce({ id: "ART-01" }).mockResolvedValueOnce({ nombre: "Portal" });
     vi.spyOn(gestor, "modificarArtefacto").mockImplementationOnce(() => { throw {}; });
     await menuModificarArtefacto(gestor, repositorio);
-  });
+  })
 });

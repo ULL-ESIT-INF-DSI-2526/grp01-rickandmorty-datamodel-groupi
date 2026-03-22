@@ -12,13 +12,13 @@ import { menuBuscarVersiones, menuConsultarLocalizaciones, menuConsultarPersonaj
 vi.mock("prompts");
 vi.mock("../../src/menu/utilidades.js", () => ({ pausa: vi.fn() }));
 
-describe("Menú de Consultas", () => {
+describe("Menú de consultas", () => {
   let gestor: GestorMultiverso;
   let espiaLog: ReturnType<typeof vi.spyOn>;
   let espiaTabla: ReturnType<typeof vi.spyOn>;
 
   beforeEach(() => {
-    // Quitamos los console para que la terminal no se llene de basura
+    // Quitamos los console para que la terminal no se llene
     espiaLog = vi.spyOn(console, "log").mockImplementation(() => {});
     espiaTabla = vi.spyOn(console, "table").mockImplementation(() => {});
 
@@ -41,13 +41,13 @@ describe("Menú de Consultas", () => {
   });
 
   // TESTS DE BUSCAR VERSIONES  
-  test("Debería buscar un personaje de verdad y mostrar la tabla", async () => {
+  test("Debería buscar un personaj y mostrar la tabla", async () => {
     vi.mocked(prompts).mockResolvedValueOnce({ nombre: "Rick" });
     await menuBuscarVersiones(gestor);
     expect(espiaTabla).toHaveBeenCalledTimes(1);
   })
 
-  test("Debería salirse si el usuario le da a enter sin poner nada", async () => {
+  test("Debería salir si el usuario le da a enter sin poner nada", async () => {
     vi.mocked(prompts).mockResolvedValueOnce({});
     await menuBuscarVersiones(gestor);
     expect(espiaTabla).not.toHaveBeenCalled();
@@ -148,7 +148,7 @@ describe("Menú de Consultas", () => {
     expect(espiaTabla).toHaveBeenCalled();
   })
 
-  test("Personajes: TODOS y ordenamos por nombre para cubrir el if", async () => {
+  test("Personajes: TODOS y ordenamos por nombre", async () => {
     vi.mocked(prompts)
       .mockResolvedValueOnce({ filtro: "TODOS" })
       .mockResolvedValueOnce({ criterio: "nombre", sentido: "ASC" });
@@ -156,7 +156,7 @@ describe("Menú de Consultas", () => {
     expect(espiaTabla).toHaveBeenCalled();
   })
 
-  test("Personajes: Filtro falso para cubrir el console log vacio", async () => {
+  test("Personajes: Filtro falso", async () => {
     vi.mocked(prompts)
       .mockResolvedValueOnce({ filtro: "nombre" })
       .mockResolvedValueOnce({ valor: "Pepe" }) // No hay ningun pepe

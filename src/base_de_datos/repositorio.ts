@@ -23,7 +23,7 @@ export class RepositorioMultiverso implements IRepositorio {
 
   
   /**
-   * Extrae los datos actuales del GestorMultiverso y los guarda en el archivo JSON.
+   * Extrae los datos actuales del GestorMultiverso y los guarda en el archivo JSON
    */
   public async guardar(): Promise<void> {
     this.#db.data = {
@@ -80,6 +80,3 @@ export class RepositorioMultiverso implements IRepositorio {
     await this.#db.write();
   }
 }
-
-
-

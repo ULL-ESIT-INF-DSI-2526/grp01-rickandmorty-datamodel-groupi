@@ -11,7 +11,7 @@ import { menuMostrarAnomalias, menuMostrarPeligros, menuInformeDimensionesActiva
 vi.mock("prompts");
 vi.mock("../../src/menu/utilidades.js", () => ({ pausa: vi.fn() }));
 
-describe("Pruebas del Menú, Informes y funciones de mostrar", () => {
+describe("Pruebas de informes", () => {
   let gestor: GestorMultiverso;
   let art: Artefacto;
   let loc: Localizacion;
@@ -37,7 +37,7 @@ describe("Pruebas del Menú, Informes y funciones de mostrar", () => {
     
     expect(console.log).toHaveBeenCalledWith("\n--- REPORTE DE SEGURIDAD: ARTEFACTOS PELIGROSOS ---");
     expect(console.table).toHaveBeenCalled();
-  });
+  })
 
   test("menuMostrarAnomalias: ", async () => {
     vi.spyOn(gestor, "detectarAnomalias").mockReturnValue({ 
@@ -47,7 +47,7 @@ describe("Pruebas del Menú, Informes y funciones de mostrar", () => {
 
     await menuMostrarAnomalias(gestor);
     expect(console.table).toHaveBeenCalled();
-  });
+  })
 
   test("menuInformeDimensionesActivas: Debería calcular la media tecnológica o avisar si no hay", async () => {
     await menuInformeDimensionesActivas(gestor);
@@ -59,7 +59,7 @@ describe("Pruebas del Menú, Informes y funciones de mostrar", () => {
 
     await menuInformeDimensionesActivas(gestorConDatos);
     expect(console.log).toHaveBeenCalledWith(expect.stringContaining("8.00/10"));
-  });
+  })
 
   test("menuInformeMayorVersion: Debería mostrar la tabla si hay datos o error si no", async () => {
     await menuInformeMayorVersion(gestor);
@@ -68,7 +68,7 @@ describe("Pruebas del Menú, Informes y funciones de mostrar", () => {
     vi.spyOn(gestor, "mayorVersionAlternativa").mockReturnValue([{ nombre: "Rick", cantidad: 3 }]);
     await menuInformeMayorVersion(gestor);
     expect(console.table).toHaveBeenCalled();
-  });
+  })
 
   test("menuInformeHistorialViajes: Éxito al mostrar historial con viajes", async () => {
     vi.mocked(prompts).mockResolvedValueOnce({ id: "PER-01" });
@@ -87,7 +87,7 @@ describe("Pruebas del Menú, Informes y funciones de mostrar", () => {
     
     expect(console.log).toHaveBeenCalledWith("\n--- HISTORIAL DE VIAJES: RICK ---");
     expect(console.table).toHaveBeenCalled();
-  });
+  })
 
   test("menuInformeHistorialViajes: Mensaje cuando el personaje no tiene viajes", async () => {
     vi.mocked(prompts).mockResolvedValueOnce({ id: "PER-01" });
@@ -98,17 +98,17 @@ describe("Pruebas del Menú, Informes y funciones de mostrar", () => {
 
     expect(console.log).toHaveBeenCalledWith("\n--- HISTORIAL DE VIAJES: RICK ---");
     expect(console.log).toHaveBeenCalledWith("Este personaje no ha realizado ningún viaje interdimensional");
-  });
+  })
 
   test("menuInformeHistorialViajes: Error si el personaje no existe", async () => {
     vi.mocked(prompts).mockResolvedValueOnce({ id: "ID-FALSO" });
     await menuInformeHistorialViajes(gestor);
     expect(console.log).toHaveBeenCalledWith("Sistema: Personaje no encontrado");
-  });
+  })
 
   test("menuInformeHistorialViajes: Salida inmediata si se cancela el prompt", async () => {
     vi.mocked(prompts).mockResolvedValueOnce({});
     await menuInformeHistorialViajes(gestor);
     expect(console.log).not.toHaveBeenCalled();
-  });
+  })
 });

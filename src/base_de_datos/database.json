@@ -413,6 +413,26 @@
       "afiliacion": "Presentadores Cósmicos",
       "nivel_inteligencia": 7,
       "descripcion": "Demanda música original para no destruir el planeta."
+    },
+    {
+      "id": "PER-123",
+      "nombre": "Rick multiversal",
+      "id_especie": "ESP-200",
+      "id_dimension": "C-123",
+      "estado": "Muerto",
+      "afiliacion": "Independiente",
+      "nivel_inteligencia": 10,
+      "descripcion": "Versión multiversal de Rick Sanchez"
+    },
+    {
+      "id": "PER-900",
+      "nombre": "Rick gatronómico",
+      "id_especie": "ESP-200",
+      "id_dimension": "C-123",
+      "estado": "Vivo",
+      "afiliacion": "Independiente",
+      "nivel_inteligencia": 10,
+      "descripcion": "Rick aficionado a la cocina"
     }
   ],
   "especies": [

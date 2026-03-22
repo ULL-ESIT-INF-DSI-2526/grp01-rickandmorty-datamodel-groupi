@@ -10,15 +10,11 @@ vi.mock("prompts", () => {
 });
 
 describe("Pruebas de utilidades", () => {
-  
   test("pausa: comprueba que llama al prompt de enter", async () => {
-    // Llamamos a la funcion
     await pausa();
 
-    // Miramos si se ha llamado a la libreria una vez
     expect(prompts).toHaveBeenCalledTimes(1);
 
-    // Miramos que el mensaje sea el que pusimos en el codigo
     expect(prompts).toHaveBeenCalledWith({
       type: "text",
       name: "key",

@@ -2,29 +2,22 @@ import { describe, expect, test } from "vitest";
 import { Localizacion } from "../../src/entidades/localizacion.js";
 
 describe("Clase Localizacion", () => {
-  const id_valido = "LOC-001"; 
-  const nombre_valido = "Citadela de los Ricks";
-  const tipo_valido = "Estación espacial";
-  const dim_referencia = "C-137";
-  const poblacion_valida = 500000;
-  const descripcion_valida = "Punto de encuentro político del Consejo de Ricks.";
+  const id = "LOC-001"; 
+  const nombre = "Citadela de los Ricks";
+  const tipo = "Estación espacial";
+  const dimension = "C-137";
+  const poblacion = 500000;
+  const descripcion = "Punto de encuentro político del Consejo de Ricks.";
 
   test("Creación de instancia y getters básicos", () => {
-    const loc = new Localizacion(
-      id_valido, 
-      nombre_valido, 
-      tipo_valido, 
-      dim_referencia, 
-      poblacion_valida, 
-      descripcion_valida
-    );
+    const loc = new Localizacion(id, nombre, tipo, dimension, poblacion, descripcion);
     
     expect(loc.id).toBe("LOC-001");
     expect(loc.nombre).toBe("Citadela de los Ricks");
     expect(loc.tipo).toBe("Estación espacial");
     expect(loc.id_dimension).toBe("C-137");
     expect(loc.poblacion).toBe(500000);
-    expect(loc.descripcion).toBe(descripcion_valida);
+    expect(loc.descripcion).toBe(descripcion);
   })
 
   test("Debería lanzar error si el ID no comienza por LOC-", () => {
@@ -35,18 +28,18 @@ describe("Clase Localizacion", () => {
 
   test("Debería lanzar error si la referencia a la dimensión es inválida", () => {
     expect(() => {
-      new Localizacion(id_valido, nombre_valido, tipo_valido, "DIM-INVALIDA", 100, "Desc");
+      new Localizacion(id, nombre, tipo, "DIM-INVALIDA", 100, "Desc");
     }).toThrow("ERROR: ID de la dimensión introducido inválido");
   })
 
   test("Debería lanzar error con población negativa en el constructor", () => {
     expect(() => {
-      new Localizacion(id_valido, nombre_valido, tipo_valido, dim_referencia, -500, "Desc");
+      new Localizacion(id, nombre, tipo, dimension, -500, "Desc");
     }).toThrow("ERROR: La población no puede ser negativa");
   })
 
   test("Setters: actualización de nombre, tipo y descripción", () => {
-    const loc = new Localizacion(id_valido, nombre_valido, tipo_valido, dim_referencia, 0, "Desc original");
+    const loc = new Localizacion(id, nombre, tipo, dimension, 0, "Desc original");
     
     loc.nombre = "Sector 7-G";
     loc.tipo = "Dimensión de bolsillo";
@@ -59,10 +52,10 @@ describe("Clase Localizacion", () => {
   })
 
   test("Setter id_dimension: cambio de referencia de dimensión con ID del Consejo", () => {
-    const loc = new Localizacion(id_valido, nombre_valido, tipo_valido, dim_referencia, 0, "Desc");
+    const loc = new Localizacion(id, nombre, tipo, dimension, 0, "Desc");
 
-    loc.id_dimension = "J19ζ7";
-    expect(loc.id_dimension).toBe("J19ζ7");
+    loc.id_dimension = "J19Z7";
+    expect(loc.id_dimension).toBe("J19Z7");
     
     expect(() => { loc.id_dimension = "ERROR-404"; }).toThrow("ERROR: ID de la dimensión introducido inválido");
   })
