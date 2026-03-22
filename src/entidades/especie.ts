@@ -1,7 +1,9 @@
+import { IEspecie } from "../interfaces/entidades.js"
+
 /**
  * Clase que representa a una especie dentro del universo de Rick y Morty
  */
-export class Especie {
+export class Especie implements IEspecie {
   #id: string;
   #nombre: string;
   #id_origen: string; // Referencia a la dimensión o localización

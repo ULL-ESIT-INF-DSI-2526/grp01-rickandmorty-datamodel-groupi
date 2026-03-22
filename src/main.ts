@@ -1,12 +1,12 @@
 import { JSONFilePreset } from 'lowdb/node';
-import { MenuInteractivo } from './menu.js';
+import { MenuInteractivo } from './menu/menu.js';
 import { GestorMultiverso } from './gestor.js';
-import { RepositorioMultiverso } from './repositorio.js';
-import { Dimension } from './dimension.js';
-import { Personaje } from './personaje.js';
-import { Especie } from './especie.js';
-import { Localizacion } from './localizacion.js';
-import { Artefacto } from './artefacto.js';
+import { RepositorioMultiverso } from './base_de_datos/repositorio.js';
+import { Dimension } from './entidades/dimension.js';
+import { Personaje } from './entidades/personaje.js';
+import { Especie } from './entidades/especie.js';
+import { Localizacion } from './entidades/localizacion.js';
+import { Artefacto } from './entidades/artefacto.js';
 import { EntidadesSchema } from './base_de_datos/schema.js';
 
 /**

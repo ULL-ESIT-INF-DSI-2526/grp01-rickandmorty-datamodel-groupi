@@ -1,4 +1,4 @@
-import { Estado } from '../dimension.js';
+import { Estado } from '../entidades/dimension.js';
 
 /**
  * Interfaz para los datos planos de una Dimensión en el JSON

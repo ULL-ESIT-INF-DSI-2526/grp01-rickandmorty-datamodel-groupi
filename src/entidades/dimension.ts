@@ -1,3 +1,4 @@
+import { IDimension } from "../interfaces/entidades.js"
 
 /**
  * Define los posibles estados de una dimensión
@@ -7,7 +8,7 @@ export type Estado = "Activa" | "Destruida" | "En cuarentena";
 /**
  * Clase que representa a una dimensión dentro del universo de Rick y Morty
  */
-export class Dimension {
+export class Dimension implements IDimension {
   #id: string;
   #nombre: string;
   #estado: Estado;

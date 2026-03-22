@@ -1,13 +1,7 @@
 import { Low } from "lowdb";
-import { GestorMultiverso } from "./gestor.js";
-import { EntidadesSchema, DimensionData, PersonajeData, EspecieData, LocalizacionData, ArtefactoData, RegistroViajeData } from "./base_de_datos/schema.js";
-
-/**
- * Interfaz que define la acción de guardar la información del multiverso
- */
-export interface IRepositorio {
-  guardar(): Promise<void>;
-}
+import { GestorMultiverso } from "../gestor.js";
+import { EntidadesSchema, DimensionData, PersonajeData, EspecieData, LocalizacionData, ArtefactoData, RegistroViajeData } from "./schema.js";
+import { IRepositorio } from "../interfaces/operaciones.js"
 
 /**
  * Clase que representa el sistema de almacenamiento del multiverso

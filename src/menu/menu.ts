@@ -1,11 +1,11 @@
 import prompts from "prompts";
-import { GestorMultiverso } from "./gestor.js";
-import { IRepositorio } from "./repositorio.js";
-import { Dimension, Estado } from "./dimension.js";
-import { Personaje } from "./personaje.js";
-import { Especie } from "./especie.js";
-import { Localizacion } from "./localizacion.js";
-import { Artefacto } from "./artefacto.js";
+import { GestorMultiverso } from "../gestor.js";
+import { IRepositorio } from "../interfaces/operaciones.js";
+import { Dimension, Estado } from "../entidades/dimension.js";
+import { Personaje } from "../entidades/personaje.js";
+import { Especie } from "../entidades/especie.js";
+import { Localizacion } from "../entidades/localizacion.js";
+import { Artefacto } from "../entidades/artefacto.js";
 
 /**
  * Clase que representa el menú interactivo por consola del multiverso
@@ -750,7 +750,7 @@ export class MenuInteractivo {
         { title: "Todos (sin filtro)", value: "TODOS"},
         { title: "Nombre", value: "nombre"},
         { title: "Especie", value: "id_especie"},
-        { title: "Afiliación", value: "afilicacion"},
+        { title: "Afiliación", value: "afiliacion"},
         { title: "Estado", value: "estado"},
         { title: "Dimension", value: "id_dimension" },
       ],
@@ -853,7 +853,6 @@ export class MenuInteractivo {
    * Función para consultar los artefactos (inventos).
    * Permite filtrar por nombre, tipo, inventor o peligrosidad.
    */
-  
   async #consultarArtefactos(): Promise<void> {
     const { filtro } = await prompts({
       type: "select",
@@ -922,6 +921,186 @@ export class MenuInteractivo {
     await this.#pausa();
   }
 
+
+  /**
+   * Pide los datos por consola para desplegar un artefacto en una localización específica
+   */
+  async #desplegarArtefacto(): Promise<void> {
+    const respuestas = await prompts([
+      { type: "text", name: "id_artefacto", message: "ID del artefacto a desplegar:" },
+      { type: "text", name: "id_localizacion", message: "ID de la localización destino:" }
+    ]);
+    
+    if (!respuestas.id_artefacto || !respuestas.id_localizacion) {
+      return;
+    }
+
+    try {
+      this.#gestor.despliegueArtefacto(respuestas.id_artefacto, respuestas.id_localizacion);
+      console.log(`Sistema: Artefacto desplegado correctamente en la localización.`);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error(error.message);
+      }
+    }
+    await this.#pausa();
+  }
+
+
+  /**
+   * Genera y muestra un informe con todas las dimensiones activas, 
+   * calculando el nivel tecnológico medio del multiverso activo
+   */
+  async #informeDimensionesActivas(): Promise<void> {
+    const activas = this.#gestor.listadoDimActivas();
+    
+    console.log(`\n--- INFORME: DIMENSIONES ACTIVAS (${activas.length}) ---`);
+    if (activas.length > 0) {
+      console.table(activas.map(dim => ({ ID: dim.id, Nombre: dim.nombre, Tecnología: dim.nivel_tecnologico })));
+      
+      // Media
+      const suma = activas.reduce((acc, dim) => acc + dim.nivel_tecnologico, 0);
+      const media = (suma / activas.length).toFixed(2);
+      console.log(`\n>> NIVEL TECNOLÓGICO MEDIO DEL MULTIVERSO ACTIVO: ${media}/10 <<\n`);
+    } else {
+      console.log("No hay dimensiones activas en este momento");
+    }
+    await this.#pausa();
+  }
+
+  
+  /**
+   * Genera y muestra un informe detallando los personajes que cuentan 
+   * con el mayor número de versiones alternativas registradas en el sistema
+   */
+  async #informeMayorVersion(): Promise<void> {
+    const resultados = this.#gestor.mayorVersionAlternativa();
+    
+    console.log(`\n--- INFORME: PERSONAJES CON MÁS VERSIONES ALTERNATIVAS ---`);
+    if (resultados.length > 0) {
+      console.table(resultados);
+    } else {
+      console.log("No hay suficientes datos registrados");
+    }
+    await this.#pausa();
+  }
+
+
+  /**
+   * Pide el ID de un personaje y muestra una tabla detallada 
+   * con el historial completo de sus viajes interdimensionales
+   */
+  async #informeHistorialViajes(): Promise<void> {
+    const { id } = await prompts({
+      type: "text",
+      name: "id",
+      message: "Introduce el ID del personaje para ver su historial de viajes:"
+    });
+
+    if (!id) {
+      return;
+    }
+
+    const personaje = this.#gestor.personajes.find(per => per.id === id);
+    if (!personaje) {
+      console.log("Sistema: Personaje no encontrado");
+      await this.#pausa();
+      return;
+    }
+
+    const viajes = this.#gestor.historialViajes(personaje);
+    
+    console.log(`\n--- HISTORIAL DE VIAJES: ${personaje.nombre.toUpperCase()} ---`);
+    if (viajes.length > 0) {
+      console.table(viajes.map(viaj => ({
+        Fecha: viaj.fecha.toLocaleDateString(),
+        Origen: viaj.id_dimension_origen,
+        Destino: viaj.id_dimension_destino,
+        Motivo: viaj.motivo
+      })));
+    } else {
+      console.log("Este personaje no ha realizado ningún viaje interdimensional");
+    }
+    await this.#pausa();
+  }
+
+
+  /**
+   * Pide los datos por consola para neutralizar un artefacto desplegado 
+   * y lo retira de su localización actual
+   */
+  async #neutralizarArtefacto(): Promise<void> {
+    const respuestas = await prompts([
+      { type: "text", name: "id_artefacto", message: "ID del artefacto a neutralizar (ej. ART-001):" },
+      { type: "text", name: "id_localizacion", message: "ID de la localización donde está desplegado (ej. LOC-001):" }
+    ]);
+
+    if (!respuestas.id_artefacto || !respuestas.id_localizacion) {
+      return;
+    }
+
+    try {
+      this.#gestor.neutralizarArtefacto(respuestas.id_artefacto, respuestas.id_localizacion);
+      
+      console.log(`Sistema: Artefacto ${respuestas.id_artefacto} neutralizado correctamente y retirado de la localización`);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error(error.message);
+      }
+    }
+
+    await this.#pausa();
+  }
+
+
+  /**
+   * Simula un experimento o paradoja que tiene como consecuencia la creación
+   *  o destrucción de una dimensión
+   */
+  async #ejecutarExperimento(): Promise<void> {
+    const { tipo } = await prompts({
+      type: "select",
+      name: "tipo",
+      message: "¿Qué consecuencia catastrófica ha tenido el experimento/paradoja?",
+      choices: [
+        { title: "Destruir una dimensión existente", value: "destruir" },
+        { title: "Crear una nueva dimensión", value: "crear" },
+        { title: "Cancelar (Demasiado peligroso)", value: "cancelar" }
+      ]
+    });
+
+    if (!tipo || tipo === "cancelar") {
+      return;
+    }
+
+    if (tipo === "destruir") {
+      const { id } = await prompts({ 
+        type: "text", 
+        name: "id", 
+        message: "Introduce el ID de la dimensión que ha colapsado (ej. C-137):" 
+      });
+
+      if (id) {
+        try {
+          this.#gestor.destruirDimension(id);
+          await this.#repositorio.guardar();
+          console.log(`\n La dimensión ${id} ha colapsado y su estado ahora es 'Destruida'`);
+        } catch (error: unknown) {
+          if (error instanceof Error) {
+            console.error(error.message);
+          }
+        }
+      }
+    } else if (tipo === "crear") {
+      console.log(`\n El experimento ha creado una nueva dimensión`);
+      console.log("--- Introduce los datos de la NUEVA dimensión ---");
+      
+      await this.#crearDimension();
+    }
+
+    await this.#pausa();
+  }
+
   /**
    * Detiene la pantalla mostrando un prompt para que el usuario
    * presione Enter antes de limpiar la pantalla y volver al menú principal
@@ -943,28 +1122,40 @@ export class MenuInteractivo {
 
     // Diccionario de comandos
     const acciones = new Map<string, () => Promise<void>>([
+      // Creación
       ["ADD_DIM", () => this.#crearDimension()],
       ["ADD_PER", () => this.#crearPersonaje()],
       ["ADD_ESP", () => this.#crearEspecie()],
       ["ADD_LOC", () => this.#crearLocalizacion()],
       ["ADD_ART", () => this.#crearArtefacto()],
-      ["VIAJE", () => this.#registrarViaje()],
-      ["SEARCH_VAR", () => this.#buscarVersiones()],
-      ["ANOM", () => this.#mostrarAnomalias()],
-      ["PELIGRO", () => this.#mostrarPeligros()],
-      ["DEL_PER", () => this.#eliminarPersonaje()],
-      ["DEL_DIM", () => this.#eliminarDimension()],
-      ["DEL_ESP", () => this.#eliminarEspecie()],
-      ["DEL_LOC", () => this.#eliminarLocalizacion()],
-      ["DEL_ART", () => this.#eliminarArtefacto()],
+      // Modificación
       ["MOD_PER", () => this.#modificarPersonaje()],
       ["MOD_DIM", () => this.#modificarDimension()],
       ["MOD_ESP", () => this.#modificarEspecie()],
       ["MOD_LOC", () => this.#modificarLocalizacion()],
       ["MOD_ART", () => this.#modificarArtefacto()],
+      // Eliminación
+      ["DEL_PER", () => this.#eliminarPersonaje()],
+      ["DEL_DIM", () => this.#eliminarDimension()],
+      ["DEL_ESP", () => this.#eliminarEspecie()],
+      ["DEL_LOC", () => this.#eliminarLocalizacion()],
+      ["DEL_ART", () => this.#eliminarArtefacto()],
+      // Consultas
       ["CONSULTAR_LOC", () => this.#consultarLocalizaciones()],
       ["CONSULTAR_PER", () => this.#consultarPersonajes()],
-      ["CONSULTAR_ART", () => this.#consultarArtefactos()]
+      ["CONSULTAR_ART", () => this.#consultarArtefactos()],
+      ["SEARCH_VAR", () => this.#buscarVersiones()],
+      // Eventos
+      ["VIAJE", () => this.#registrarViaje()],
+      ["DESPLEGAR_ART", () => this.#desplegarArtefacto()],
+      ["NEUTRALIZAR_ART", () => this.#neutralizarArtefacto()],
+      ["EXPERIMENTO", () => this.#ejecutarExperimento()],
+      // Informes
+      ["INF_DIM", () => this.#informeDimensionesActivas()],
+      ["INF_MAYOR_VER", () => this.#informeMayorVersion()],
+      ["INF_VIAJES", () => this.#informeHistorialViajes()],
+      ["ANOM", () => this.#mostrarAnomalias()],
+      ["PELIGRO", () => this.#mostrarPeligros()]
     ]);
 
     while (!salir) {
@@ -974,29 +1165,48 @@ export class MenuInteractivo {
         name: "opcion",
         message: "=== GESTOR MULTIVERSAL RICK & MORTY ===",
         choices: [
+          { title: "--- CREACIÓN ---", value: "", disabled: true },
           { title: "Nueva Dimensión", value: "ADD_DIM" },
           { title: "Nuevo Personaje", value: "ADD_PER" },
           { title: "Nueva Especie", value: "ADD_ESP" },
           { title: "Nueva Localización", value: "ADD_LOC" },
           { title: "Nuevo Artefacto", value: "ADD_ART" },
+
+          { title: "--- MODIFICACIÓN ---", value: "", disabled: true },
           { title: "Modificar Personaje", value: "MOD_PER" },
           { title: "Modificar Dimensión", value: "MOD_DIM" },
           { title: "Modificar Especie", value: "MOD_ESP" },
           { title: "Modificar Localización", value: "MOD_LOC" },
           { title: "Modificar Artefacto", value: "MOD_ART" },
+
+          { title: "--- ELIMINACIÓN ---", value: "", disabled: true },
           { title: "Eliminar Personaje", value: "DEL_PER" },
           { title: "Eliminar Dimensión", value: "DEL_DIM" },
           { title: "Eliminar Especie", value: "DEL_ESP" },
           { title: "Eliminar Localización", value: "DEL_LOC" },
           { title: "Eliminar Artefacto", value: "DEL_ART" },
+
+          { title: "--- CONSULTAS ---", value: "", disabled: true },
           { title: "Consultar Localizaciones", value: "CONSULTAR_LOC" },
           { title: "Consultar Personajes", value: "CONSULTAR_PER"},
           { title: "Consultar Artefactos", value: "CONSULTAR_ART" },
-          { title: "Registrar Viaje", value: "VIAJE" },
           { title: "Buscar Variantes", value: "SEARCH_VAR" },
+
+          { title: "--- EVENTOS ---", value: "", disabled: true },
+          { title: "Registrar Viaje", value: "VIAJE" },
+          { title: "Desplegar Artefacto", value: "DESPLEGAR_ART" },
+          { title: "Neutralizar Artefacto", value: "NEUTRALIZAR_ART" },
+          { title: "Ejecutar Experimento / Paradoja", value: "EXPERIMENTO" },
+
+          { title: "--- INFORMES ---", value: "", disabled: true },
+          { title: "Informe: Dimensiones Activas y Media", value: "INF_DIM" },
+          { title: "Informe: Personajes con más versiones", value: "INF_MAYOR_VER" },
+          { title: "Informe: Historial de viajes", value: "INF_VIAJES" },
           { title: "Informe: Anomalías", value: "ANOM" },
           { title: "Informe: Peligrosidad", value: "PELIGRO" },
-          { title: "Salir", value: "EXIT" },
+
+          { title: "--- SALIR ---", value: "", disabled: true },
+          { title: "Salir del gestor", value: "EXIT" },
         ],
       });
 

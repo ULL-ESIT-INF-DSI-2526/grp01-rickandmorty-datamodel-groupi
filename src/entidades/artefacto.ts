@@ -1,7 +1,9 @@
+import { IArtefacto } from "../interfaces/entidades.js"
+
 /**
  * Clase que representa a un artefacto dentro del universo de Rick y Morty
  */
-export class Artefacto {
+export class Artefacto implements IArtefacto {
   #id: string;
   #nombre: string;
   #id_inventor: string; // Referencia

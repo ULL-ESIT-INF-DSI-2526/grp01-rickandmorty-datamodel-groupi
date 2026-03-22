@@ -1,14 +1,15 @@
-import { Dimension, Estado } from "./dimension.js";
-import { Personaje } from "./personaje.js";
-import { Especie } from "./especie.js";
-import { Localizacion } from "./localizacion.js";
-import { Artefacto } from "./artefacto.js";
-import { RegistroViaje } from "./registroviaje.js";
+import { Dimension, Estado } from "./entidades/dimension.js";
+import { Personaje } from "./entidades/personaje.js";
+import { Especie } from "./entidades/especie.js";
+import { Localizacion } from "./entidades/localizacion.js";
+import { Artefacto } from "./entidades/artefacto.js";
+import { RegistroViaje } from "./interfaces/registroviaje.js";
+import { ICreador, IEliminador, IModificador, IConsultor, IGestorEventos } from "./interfaces/operaciones.js"
 
 /**
  * Clase que gestiona el estado global del multiverso, controlando dimensiones, personajes, especies, localizaciones, artefactos y viajes entre dimensiones
  */
-export class GestorMultiverso {
+export class GestorMultiverso implements ICreador, IEliminador, IModificador, IConsultor, IGestorEventos {
   #dimensiones: Dimension[];
   #personajes: Personaje[];
   #especies: Especie[];
@@ -535,6 +536,27 @@ export class GestorMultiverso {
       artefacto.descripcion = nuevosDatos.descripcion;
     }
   }
+
+
+  /**
+   * Neutraliza un artefacto que estaba desplegado en una localización
+   * @param id_artefacto - Identificador del artefacto a neutralizar
+   * @param id_localizacion - Identificador de la localización donde estaba
+   * @throws Error - Lanza un error si el artefacto no estaba desplegado en esa localización
+   */
+  public neutralizarArtefacto(id_artefacto: string, id_localizacion: string): void {
+    const size_previo = this.#artefactosDesplegados.length;
+
+    this.#artefactosDesplegados = this.#artefactosDesplegados.filter(
+      despliegue => !(despliegue.id_artefacto === id_artefacto && despliegue.id_localizacion === id_localizacion)
+    );
+
+    // Si el tamaño es el mismo, es que no hemos borrado nada
+    if (this.#artefactosDesplegados.length === size_previo) {
+      throw new Error("ERROR: El artefacto no se encuentra desplegado en esa localización");
+    }
+  }
+
 }
 
 

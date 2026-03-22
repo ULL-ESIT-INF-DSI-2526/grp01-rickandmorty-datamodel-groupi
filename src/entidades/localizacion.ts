@@ -1,7 +1,9 @@
+import { ILocalizacion } from "../interfaces/entidades.js"
+
 /**
  * Clase que representa a una localización dentro del universo de Rick y Morty
  */
-export class Localizacion {
+export class Localizacion implements ILocalizacion {
   #id: string;
   #nombre: string;
   #tipo: string;

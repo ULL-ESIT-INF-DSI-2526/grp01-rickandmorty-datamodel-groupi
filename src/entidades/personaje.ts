@@ -1,7 +1,9 @@
+import { IPersonaje } from "../interfaces/entidades.js"
+
 /**
  * Clase que representa a un personaje dentro del universo de Rick y Morty
  */
-export class Personaje {
+export class Personaje implements IPersonaje {
   #id: string;
   #nombre: string;
   #id_especie: string; // Referencia
