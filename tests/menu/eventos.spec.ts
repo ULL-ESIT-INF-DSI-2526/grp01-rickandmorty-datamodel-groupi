@@ -12,7 +12,7 @@ import {
   menuDesplegarArtefacto,
   menuNeutralizarArtefacto,
   menuEjecutarExperimento,
-} from "../../src/menu/eventos.js"; // Asumiendo que el archivo se llama eventos.ts
+} from "../../src/menu/eventos.js"; 
 import { menuCrearDimension } from "../../src/menu/creacion.js";
 
 // Mockeamos prompts y pausas
@@ -154,13 +154,13 @@ describe("Menú de Eventos (Viajes, Artefactos y Experimentos)", () => {
     test("Debería salir sin hacer nada si falta el id del artefacto (cortocircuito ||)", async () => {
       vi.mocked(prompts).mockResolvedValueOnce({ id_localizacion: "LOC-01" });
       await menuNeutralizarArtefacto(gestor);
-      expect(gestor.artefactosDesplegados.length).toBe(1); // Sigue desplegado
+      expect(gestor.artefactosDesplegados.length).toBe(1); 
     });
 
     test("Debería salir sin hacer nada si falta el id de la localización (cortocircuito ||)", async () => {
       vi.mocked(prompts).mockResolvedValueOnce({ id_artefacto: "ART-01" });
       await menuNeutralizarArtefacto(gestor);
-      expect(gestor.artefactosDesplegados.length).toBe(1); // Sigue desplegado
+      expect(gestor.artefactosDesplegados.length).toBe(1); 
     });
 
     test("Debería capturar el error REAL del gestor si no estaba desplegado", async () => {
@@ -210,7 +210,7 @@ describe("Menú de Eventos (Viajes, Artefactos y Experimentos)", () => {
     test("No debería hacer nada si elige destruir pero no pone ID (if id)", async () => {
       vi.mocked(prompts)
         .mockResolvedValueOnce({ tipo: "destruir" })
-        .mockResolvedValueOnce({}); // ID vacío
+        .mockResolvedValueOnce({}); 
 
       await menuEjecutarExperimento(gestor, repositorio);
 
