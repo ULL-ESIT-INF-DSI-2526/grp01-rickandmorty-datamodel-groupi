@@ -202,7 +202,7 @@ describe("Menú de Eventos (Viajes, Artefactos y Experimentos)", () => {
 
       await menuEjecutarExperimento(gestor, repositorio);
 
-      expect(gestor.dimensiones[0].estado).toBe("Destruida"); // C-137 estaba en el índice 0
+      expect(gestor.dimensiones[0].estado).toBe("Destruida"); 
       expect(repositorio.guardar).toHaveBeenCalledTimes(1);
       expect(espiaLog).toHaveBeenCalledWith("\n La dimensión C-137 ha colapsado y su estado ahora es 'Destruida'");
     });
