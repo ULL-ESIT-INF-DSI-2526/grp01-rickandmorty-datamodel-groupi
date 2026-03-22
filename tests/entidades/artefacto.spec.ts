@@ -84,4 +84,11 @@ describe("Clase Artefacto", () => {
     expect(plumbus.id).toBe("ART-002");
     expect(plumbus.tipo).toBe("Objeto cotidiano absurdo");
   })
+
+  test("Setter id_inventor: modificación del inventor del artefacto", () => {
+    const art = new Artefacto(id_valido, "Casco de Snuffles", "PER-001", "Biotecnología", 6, "Hace a los perros listos");
+    art.id_inventor = "PER-004";
+    expect(art.id_inventor).toBe("PER-004");
+  })
+
 });

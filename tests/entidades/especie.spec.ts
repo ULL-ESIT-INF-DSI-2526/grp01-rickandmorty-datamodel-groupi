@@ -75,4 +75,15 @@ describe("Clase Especie", () => {
     expect(roboto.id).toBe("ESP-004");
     expect(roboto.tipo).toBe("Robótico");
   })
+
+  test("Setter id_origen: modificación del origen de la especie", () => {
+    const especie = new Especie(id_valido, "Pájaros Persona", origen_dimension, "Humanoide/Ave", 120, "Son buena gente");
+  
+    especie.id_origen = "C-500A";
+    expect(especie.id_origen).toBe("C-500A");
+
+    especie.id_origen = "LOC-005";
+    expect(especie.id_origen).toBe("LOC-005");
+  })
+
 });
