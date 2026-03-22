@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { Personaje } from "../src/personaje";
+import { Personaje } from "../../src/entidades/personaje.js";
 
 describe("Clase Personaje", () => {
   const id_valido = "PER-001";

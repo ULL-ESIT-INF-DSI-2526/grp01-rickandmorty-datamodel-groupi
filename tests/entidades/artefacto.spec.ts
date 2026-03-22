@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { Artefacto } from "../src/artefacto";
+import { Artefacto } from "../../src/entidades/artefacto.js";
 
 describe("Clase Artefacto", () => {
   const id_valido = "ART-001";

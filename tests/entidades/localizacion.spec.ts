@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { Localizacion } from "../src/localizacion";
+import { Localizacion } from "../../src/entidades/localizacion.js";
 
 describe("Clase Localizacion", () => {
   const id_valido = "LOC-001"; 

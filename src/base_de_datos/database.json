@@ -104,6 +104,13 @@
       "estado": "Activa",
       "nivel_tecnologico": 10,
       "descripcion": "El sector del espacio de donde provienen las cabezas gigantes flotantes a las que les encanta la música."
+    },
+    {
+      "id": "C-2000",
+      "nombre": "Prueba",
+      "estado": "Activa",
+      "nivel_tecnologico": 10,
+      "descripcion": "Prueba"
     }
   ],
   "personajes": [
@@ -408,7 +415,7 @@
       "descripcion": "Demanda música original para no destruir el planeta."
     }
   ],
-"especies": [
+  "especies": [
     {
       "id": "ESP-01",
       "nombre": "Humano",
@@ -488,6 +495,14 @@
       "tipo": "Objeto Animado",
       "esperanza_de_vida": 100,
       "descripcion": "Teléfonos gigantes vivos que usan humanos como receptores para hacer sus llamadas."
+    },
+    {
+      "id": "ESP-2000",
+      "nombre": "Prueba",
+      "id_origen": "LOC-200",
+      "tipo": "Alien",
+      "esperanza_de_vida": 12,
+      "descripcion": "Malo"
     }
   ],
   "localizaciones": [
@@ -650,9 +665,17 @@
       "id_dimension": "C-002",
       "poblacion": 30,
       "descripcion": "Zona del vacío espacial donde las cabezas gigantes flotan juzgando la música planetaria."
+    },
+    {
+      "id": "LOC-2000",
+      "nombre": "Prueba",
+      "tipo": "Prueba",
+      "id_dimension": "C-300",
+      "poblacion": "",
+      "descripcion": "l"
     }
   ],
-"artefactos": [
+  "artefactos": [
     {
       "id": "ART-01",
       "nombre": "Pistola de Portales",
@@ -772,9 +795,25 @@
       "tipo": "Cibernética Neuronal",
       "nivel_peligrosidad": 9,
       "descripcion": "Transmisor camuflado como parche de ojo utilizado por Evil Morty para controlar remotamente al Rick Malvado."
+    },
+    {
+      "id": "ART-123",
+      "nombre": "Reactor ARK",
+      "id_inventor": "PER-123",
+      "tipo": "Viviente",
+      "nivel_peligrosidad": 10,
+      "descripcion": "Reactor de industrias Stark"
+    },
+    {
+      "id": "ART-2000",
+      "nombre": "Prueba",
+      "id_inventor": "PER-200",
+      "tipo": "Mala",
+      "nivel_peligrosidad": 10,
+      "descripcion": "Mala"
     }
   ],
-"historialViajes": [
+  "historialViajes": [
     {
       "id_personaje": "PER-01",
       "id_dimension_origen": "C-137",

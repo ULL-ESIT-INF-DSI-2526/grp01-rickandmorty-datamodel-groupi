@@ -13,7 +13,7 @@ import { EntidadesSchema } from './base_de_datos/schema.js';
  * Función principal que arranca la aplicación
  * Carga la base de datos, prepara los datos y lanza el menú
  */
-async function bootstrap() {
+async function iniciarMultiverso() {
   console.log("Iniciando conexión con el Multiverso...");
 
   const db = await JSONFilePreset<EntidadesSchema>('./src/base_de_datos/database.json', {
@@ -67,7 +67,7 @@ async function bootstrap() {
 }
 
 // Ejecución de la función principal con control global de errores
-bootstrap().catch((error: unknown) => {
+iniciarMultiverso().catch((error: unknown) => {
   if (error instanceof Error) {
     console.error("ERROR FATAL AL CARGAR EL MULTIVERSO:", error.message);
   }

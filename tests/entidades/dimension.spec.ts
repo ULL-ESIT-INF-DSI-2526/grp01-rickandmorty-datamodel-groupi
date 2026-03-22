@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { Dimension } from "../src/dimension";
+import { Dimension } from "../../src/entidades/dimension.js";
 
 describe("Clase Dimension", () => {
   const id_valido1 = "C-137";
